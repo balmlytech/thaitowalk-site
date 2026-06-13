@@ -64,8 +64,15 @@
   var heroProgress = 0;
   function onScrollHero() {
     if (!hero) return;
-    var h = hero.offsetHeight || 1;
-    heroProgress = Math.min(1, Math.max(0, window.scrollY / h));
+    // progress = how far we've scrolled through the hero's pinned range (0..1).
+    // The hero is taller than the viewport; the pin stays stuck for that surplus.
+    var scrollable = hero.offsetHeight - window.innerHeight;
+    if (scrollable <= 0) {
+      heroProgress = 0;
+    } else {
+      var top = hero.getBoundingClientRect().top; // 0 at start, negative as we scroll in
+      heroProgress = Math.min(1, Math.max(0, -top / scrollable));
+    }
     if (!reduceMotion) hero.style.setProperty('--hp', heroProgress.toFixed(4));
   }
   onScrollHero();

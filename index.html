@@ -87,38 +87,40 @@
     </button>
   </header>
 
-  <!-- ============ HERO — cinematic wok, zooms back into the kitchen on scroll ============ -->
+  <!-- ============ HERO — pinned cinematic wok; zooms back into the kitchen as you scroll through ============ -->
   <section class="hero" id="top">
-    <div class="hero-media" aria-hidden="true">
-      <div class="hero-media-inner">
-        <img class="hero-img" src="/images/hero-wok.jpg" alt="" fetchpriority="high" />
-        <canvas class="flame-canvas hero-embers"></canvas>
+    <div class="hero-pin">
+      <div class="hero-media" aria-hidden="true">
+        <div class="hero-media-inner">
+          <img class="hero-img" src="/images/hero-wok.jpg" alt="" fetchpriority="high" />
+          <canvas class="flame-canvas hero-embers"></canvas>
+        </div>
+        <div class="hero-scrim"></div>
+        <div class="hero-glow"></div>
       </div>
-      <div class="hero-scrim"></div>
-      <div class="hero-glow"></div>
-    </div>
 
-    <div class="wrap hero-inner">
-      <div class="hero-copy">
-        <p class="eyebrow hero-eyebrow">Thai street food · Bedford</p>
-        <h1 class="hero-title">
-          <span class="line"><span>Fast Thai street food,</span></span>
-          <span class="line"><span><em>made hot.</em></span></span>
-        </h1>
-        <p class="hero-sub">Fresh, healthy, cooked to order — from our kitchen to your hands.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="/menu.html">
-            See the menu
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a class="btn btn-line" href="#build">Build your box</a>
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow hero-eyebrow">Thai street food · Bedford</p>
+          <h1 class="hero-title">
+            <span class="line"><span>Fast Thai street food,</span></span>
+            <span class="line"><span><em>made hot.</em></span></span>
+          </h1>
+          <p class="hero-sub">Fresh, healthy, cooked to order — from our kitchen to your hands.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="/menu.html">
+              See the menu
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn-line" href="#build">Build your box</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="scroll-hint" aria-hidden="true">
-      <span>Scroll</span>
-      <span class="line"></span>
+      <div class="scroll-hint" aria-hidden="true">
+        <span>Scroll</span>
+        <span class="line"></span>
+      </div>
     </div>
   </section>
 

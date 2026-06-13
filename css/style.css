@@ -195,12 +195,18 @@ section { position: relative; }
    ========================================================================== */
 .hero {
   position: relative;
-  min-height: 100svh;
+  /* taller than the viewport: the pin stays stuck for the extra height,
+     giving scroll distance for the zoom to play out while fully in view */
+  height: 185svh;
+  background: var(--charcoal);
+  --hp: 0;
+}
+.hero-pin {
+  position: sticky; top: 0;
+  height: 100svh;
   display: flex; align-items: center;
   overflow: hidden;
   padding: clamp(110px, 16vh, 170px) 0 clamp(40px, 6vh, 70px);
-  background: var(--charcoal);
-  --hp: 0;
 }
 
 /* full-bleed media layer */
@@ -295,6 +301,7 @@ html.js .hero-cta { transition-delay: 520ms; }
   font-family: var(--mono); font-size: .66rem; letter-spacing: .26em; text-transform: uppercase;
   color: rgba(246, 240, 230, .42);
   display: flex; flex-direction: column; align-items: center; gap: 10px;
+  opacity: calc(1 - var(--hp) * 4); /* fades out the moment you start scrolling */
 }
 .scroll-hint .line { width: 1px; height: 38px; background: linear-gradient(rgba(245, 130, 32, .9), transparent); animation: drop 1.9s ease-in-out infinite; }
 @keyframes drop {
@@ -572,4 +579,10 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; }
   html.js .hero-eyebrow, html.js .hero-sub, html.js .hero-cta { opacity: 1; transform: none; }
   html.js .sig-feature .frame img { transform: none; }
   .marquee-track { animation: none !important; }
+  /* no pinned scroll-scrub: collapse the hero to a normal full-screen panel */
+  .hero { height: auto; min-height: 100svh; }
+  .hero-pin { position: static; height: auto; min-height: 100svh; }
+  .hero-media-inner { transform: none; }
+  .hero-inner { opacity: 1; transform: none; }
+  .scroll-hint { opacity: 1; }
 }
