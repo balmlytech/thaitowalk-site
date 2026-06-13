@@ -3,3 +3,6 @@
 
 # Claude Code local settings
 .claude/
+
+# Alternate hero render kept locally for an easy swap, not deployed
+images/hero-wok-alt.jpg

@@ -5,7 +5,7 @@ Fast Thai street food, Bedford. Static site (HTML/CSS/JS), no build step, no dep
 ## Structure
 
 ```
-index.html        Landing page (editorial type + wok & flame hero)
+index.html        Landing page (cinematic photoreal wok hero — zooms back into the kitchen on scroll)
 menu.html         Full menu (typographic "fine-dining sheet" style)
 css/style.css     Brand design system + landing styles
 css/menu.css      Menu page styles

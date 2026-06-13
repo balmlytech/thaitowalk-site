@@ -87,10 +87,16 @@
     </button>
   </header>
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ HERO — cinematic wok, zooms back into the kitchen on scroll ============ -->
   <section class="hero" id="top">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <span class="hero-thai" aria-hidden="true">ไทยทูวอล์ค</span>
+    <div class="hero-media" aria-hidden="true">
+      <div class="hero-media-inner">
+        <img class="hero-img" src="/images/hero-wok.jpg" alt="" fetchpriority="high" />
+        <canvas class="flame-canvas hero-embers"></canvas>
+      </div>
+      <div class="hero-scrim"></div>
+      <div class="hero-glow"></div>
+    </div>
 
     <div class="wrap hero-inner">
       <div class="hero-copy">
@@ -106,18 +112,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
           <a class="btn btn-line" href="#build">Build your box</a>
-        </div>
-      </div>
-
-      <div class="hero-stage" aria-hidden="true">
-        <div class="wok">
-          <div class="wok-pan">
-            <div class="wok-body"></div>
-            <div class="wok-rim"></div>
-            <div class="wok-sheen"></div>
-          </div>
-          <canvas class="flame-canvas"></canvas>
-          <img class="hero-logo" src="/images/logo-icon.png" alt="" />
         </div>
       </div>
     </div>
