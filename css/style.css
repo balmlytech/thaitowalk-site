@@ -538,6 +538,13 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; }
 @media (max-width: 640px) {
   /* keep the header clear of notches / status bars on real phones */
   .site-header { padding-top: max(16px, env(safe-area-inset-top)); }
+  /* No backdrop-filter on mobile: a filtered ancestor would trap the
+     fixed full-screen menu inside the header's box once scrolled. Use a
+     solid background instead so the overlay always covers the viewport. */
+  .site-header.scrolled {
+    background: var(--charcoal);
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
   /* full-screen overlay nav with staggered links */
   .nav {
     position: fixed; inset: 0; z-index: 120;

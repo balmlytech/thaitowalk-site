@@ -101,9 +101,23 @@
         heroVideo.addEventListener('canplay', function () {
           heroVideo.classList.add('is-ready');
         }, { once: true });
-        var playAttempt = heroVideo.play();
-        if (playAttempt && playAttempt.catch) {
-          playAttempt.catch(function () { /* autoplay blocked — keep the poster */ });
+        var tryPlay = function () {
+          var p = heroVideo.play();
+          if (p && p.catch) p.catch(function () {});
+        };
+        tryPlay();
+        // If autoplay was blocked (e.g. iOS Low Power Mode), start on the
+        // first user interaction. Until then the still poster shows.
+        if (heroVideo.paused) {
+          var kick = function () {
+            tryPlay();
+            window.removeEventListener('pointerdown', kick);
+            window.removeEventListener('touchstart', kick);
+            window.removeEventListener('scroll', kick);
+          };
+          window.addEventListener('pointerdown', kick, { once: true, passive: true });
+          window.addEventListener('touchstart', kick, { once: true, passive: true });
+          window.addEventListener('scroll', kick, { once: true, passive: true });
         }
       }
     }
