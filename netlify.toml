@@ -1,0 +1,6 @@
+# Netlify configuration — Thai To Walk
+# Static site: no build step, served straight from the repo root.
+
+[build]
+  publish = "."
+  command = ""
