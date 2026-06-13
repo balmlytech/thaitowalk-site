@@ -93,7 +93,7 @@
       <div class="hero-media" aria-hidden="true">
         <div class="hero-media-inner">
           <img class="hero-img" src="/images/hero-wok.jpg" alt="" fetchpriority="high" />
-          <canvas class="flame-canvas hero-embers"></canvas>
+          <video class="hero-video" poster="/images/hero-wok.jpg" muted loop playsinline preload="none" data-src="/images/hero-video.mp4" aria-hidden="true"></video>
         </div>
         <div class="hero-scrim"></div>
         <div class="hero-glow"></div>
@@ -291,11 +291,17 @@
       </div>
       <div class="loc-map" data-reveal style="--i:1">
         <iframe
+          class="gmap"
           title="Map showing Thai To Walk at 94 High Street, Bedford"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=94+High+Street+Bedford+MK40+1NN&output=embed">
-        </iframe>
+          data-src="https://www.google.com/maps?q=94+High+Street+Bedford+MK40+1NN&output=embed"></iframe>
+        <div class="map-gate">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <p>The map loads from Google Maps, which sets cookies. Load it to see where we are.</p>
+          <button type="button" class="btn btn-line" data-load-map>Load the map</button>
+          <a class="map-gate-link" href="/cookies.html">Cookie policy</a>
+        </div>
       </div>
     </div>
   </section>
@@ -323,12 +329,27 @@
       </div>
       <div class="foot-bottom">
         <span>&copy; <span id="year">2026</span> Thai To Walk. All rights reserved.</span>
-        <span>Fresh · Healthy · High Quality</span>
+        <span class="foot-legal">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/cookies.html">Cookies</a>
+          <button type="button" class="cookie-settings" data-cookie-settings>Cookie settings</button>
+        </span>
       </div>
     </div>
     <span class="foot-word" aria-hidden="true">THAI TO WALK</span>
   </footer>
 
+  <!-- ============ COOKIE CONSENT ============ -->
+  <div class="cookie-banner" role="dialog" aria-label="Cookie notice" aria-live="polite">
+    <h2>Cookies</h2>
+    <p>We only set cookies for the embedded Google map on our “Find us” section — nothing else, no tracking or analytics. See our <a href="/cookies.html">Cookie Policy</a>.</p>
+    <div class="cookie-actions">
+      <button type="button" class="btn btn-primary" data-consent="accept">Accept</button>
+      <button type="button" class="btn btn-line" data-consent="reject">Reject</button>
+    </div>
+  </div>
+
   <script src="/js/main.js"></script>
+  <script src="/js/consent.js"></script>
 </body>
 </html>

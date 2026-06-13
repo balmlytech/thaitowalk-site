@@ -79,89 +79,28 @@
   window.addEventListener('scroll', onScrollHero, { passive: true });
 
   /* ==========================================================================
-     EMBER FIELD — sparks rising from the wok, over the photoreal hero image.
-     Full-bleed canvas, capped particles, pauses when hero off-screen.
+     HERO VIDEO — real flame & steam motion, loaded responsibly.
+     The poster (hero-wok.jpg) shows instantly; the video fades in over it.
+     Skipped entirely for reduced-motion and data-saver users, and if the
+     browser blocks autoplay we simply keep the still poster.
      ========================================================================== */
-  var canvas = document.querySelector('.hero-embers');
-  if (canvas && !reduceMotion) {
-    var ctx = canvas.getContext('2d', { alpha: true });
-    var DPR = Math.min(window.devicePixelRatio || 1, 2);
-    var W = 0, H = 0;
-    var embers = [];
-    var running = true;
-
-    function resize() {
-      var r = canvas.getBoundingClientRect();
-      W = r.width; H = r.height;
-      canvas.width = W * DPR; canvas.height = H * DPR;
-      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    // pause rendering when hero scrolled away (perf)
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) {
-        running = es[0].isIntersecting;
-        if (running) loop();
-      }, { threshold: 0 }).observe(canvas);
-    }
-
-    function spawn() {
-      // bias toward the wok / flame zone (centre-right, lower half of frame)
-      var cx = W * 0.62 + (Math.random() - 0.5) * W * 0.5;
-      embers.push({
-        x: cx,
-        y: H * (0.72 + Math.random() * 0.26),
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: -(0.3 + Math.random() * 1.1),
-        life: 1,
-        decay: 0.004 + Math.random() * 0.008,
-        size: 0.8 + Math.random() * 2.2,
-        wob: Math.random() * Math.PI * 2,
-        flick: 0.6 + Math.random() * 0.4
-      });
-    }
-
-    function tick() {
-      // fewer sparks as the camera pulls back into the kitchen
-      var rate = Math.max(1, Math.round(3 - heroProgress * 2));
-      for (var i = 0; i < rate; i++) spawn();
-      if (embers.length > 220) embers.splice(0, embers.length - 220);
-
-      ctx.clearRect(0, 0, W, H);
-      ctx.globalCompositeOperation = 'lighter';
-
-      for (var j = embers.length - 1; j >= 0; j--) {
-        var p = embers[j];
-        p.wob += 0.05;
-        p.x += p.vx + Math.sin(p.wob) * 0.4;
-        p.y += p.vy;
-        p.vy *= 0.995;
-        p.life -= p.decay;
-        if (p.life <= 0) { embers.splice(j, 1); continue; }
-
-        var t = p.life;
-        var a = t * 0.9 * p.flick;
-        var r = p.size * (1.6 + (1 - t));
-        var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r);
-        g.addColorStop(0, 'rgba(255,214,140,' + a + ')');
-        g.addColorStop(0.4, 'rgba(245,130,32,' + a * 0.7 + ')');
-        g.addColorStop(1, 'rgba(120,30,0,0)');
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-        ctx.fill();
+  var heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    var conn = navigator.connection || {};
+    var saveData = conn.saveData === true;
+    if (!reduceMotion && !saveData) {
+      var vsrc = heroVideo.getAttribute('data-src');
+      if (vsrc) {
+        heroVideo.src = vsrc;
+        heroVideo.addEventListener('canplay', function () {
+          heroVideo.classList.add('is-ready');
+        }, { once: true });
+        var playAttempt = heroVideo.play();
+        if (playAttempt && playAttempt.catch) {
+          playAttempt.catch(function () { /* autoplay blocked — keep the poster */ });
+        }
       }
-      ctx.globalCompositeOperation = 'source-over';
     }
-
-    function loop() {
-      if (!running) return;
-      tick();
-      requestAnimationFrame(loop);
-    }
-    loop();
   }
 
   /* ---------- Footer year ---------- */
