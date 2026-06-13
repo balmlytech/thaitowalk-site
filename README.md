@@ -5,15 +5,20 @@ Fast Thai street food, Bedford. Static site (HTML/CSS/JS), no build step, no dep
 ## Structure
 
 ```
-index.html        Landing page (cinematic wok + flame hero)
-menu.html         Full menu
+index.html        Landing page (editorial type + wok & flame hero)
+menu.html         Full menu (typographic "fine-dining sheet" style)
 css/style.css     Brand design system + landing styles
 css/menu.css      Menu page styles
-js/main.js        Flame canvas, header, scroll reveals, mobile nav
+js/main.js        Flame canvas, header, scroll reveals, overlay nav
 images/           Logos (transparent PNG) + the one real food photo
 robots.txt        Search-engine directives
 sitemap.xml       Sitemap for Google
 ```
+
+Design system: dark-first "night market" theme. Fraunces (display serif),
+Hanken Grotesk (body), Space Mono (labels/prices), Chonburi (Thai script
+accents) — all via Google Fonts. Brand orange `#F58220` on warm charcoal
+`#161412` with bone `#F6F0E6` light sections.
 
 ## Run locally
 

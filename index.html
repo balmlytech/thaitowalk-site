@@ -8,7 +8,7 @@
   <title>Thai To Walk | Fast Thai Street Food in Bedford — Fresh, Healthy, Made Hot</title>
   <meta name="description" content="Thai To Walk serves fast, fresh Thai street food made to order in Bedford. Authentic stir-fries, curries, noodles and rice — healthy, high quality, hot from our kitchen to your hands. 94 High Street, Bedford." />
   <link rel="canonical" href="https://thaitowalk.com/" />
-  <meta name="theme-color" content="#F58220" />
+  <meta name="theme-color" content="#161412" />
   <meta name="robots" content="index, follow" />
 
   <!-- Open Graph -->
@@ -30,12 +30,13 @@
   <link rel="icon" type="image/png" href="/images/logo-icon.png" />
   <link rel="apple-touch-icon" href="/images/logo-icon.png" />
 
-  <!-- Fonts -->
+  <!-- Fonts: Fraunces (display) + Hanken Grotesk (body) + Space Mono (dockets) + Chonburi (Thai accents) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Chonburi&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/css/style.css" />
+  <script>document.documentElement.classList.add('js');</script>
 
   <!-- Structured data: LocalBusiness / Restaurant -->
   <script type="application/ld+json">
@@ -71,10 +72,10 @@
   <!-- ============ HEADER ============ -->
   <header class="site-header">
     <a class="brand" href="/" aria-label="Thai To Walk home">
-      <img class="logo-light" src="/images/logo-icon.png" alt="Thai To Walk" />
+      <img src="/images/logo-icon.png" alt="Thai To Walk" />
     </a>
     <nav class="nav" aria-label="Primary">
-      <a href="#essence">Why us</a>
+      <a href="#story">Our promise</a>
       <a href="#build">Build a box</a>
       <a href="#dishes">Dishes</a>
       <a href="/menu.html">Menu</a>
@@ -88,96 +89,122 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="top">
-    <div class="hero-vignette"></div>
-    <div class="hero-stage">
-      <div class="wok" aria-hidden="true">
-        <div class="wok-pan">
-          <div class="wok-body"></div>
-          <div class="wok-sheen"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <span class="hero-thai" aria-hidden="true">ไทยทูวอล์ค</span>
+
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow hero-eyebrow">Thai street food · Bedford</p>
+        <h1 class="hero-title">
+          <span class="line"><span>Fast Thai street food,</span></span>
+          <span class="line"><span><em>made hot.</em></span></span>
+        </h1>
+        <p class="hero-sub">Fresh, healthy, cooked to order — from our kitchen to your hands.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="/menu.html">
+            See the menu
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-line" href="#build">Build your box</a>
         </div>
-        <canvas class="flame-canvas"></canvas>
-        <img class="hero-logo" src="/images/logo-icon.png" alt="Thai To Walk logo hovering over a wok" />
+      </div>
+
+      <div class="hero-stage" aria-hidden="true">
+        <div class="wok">
+          <div class="wok-pan">
+            <div class="wok-body"></div>
+            <div class="wok-rim"></div>
+            <div class="wok-sheen"></div>
+          </div>
+          <canvas class="flame-canvas"></canvas>
+          <img class="hero-logo" src="/images/logo-icon.png" alt="" />
+        </div>
       </div>
     </div>
 
-    <div class="hero-copy">
-      <h1>Fast Thai street food,<br /><span class="fresh">made hot.</span></h1>
-      <p>Fresh, healthy, cooked to order — from our kitchen to your hands.</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="/menu.html">
-          See the menu
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a class="btn btn-ghost" href="#build">Build your box</a>
-      </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <span>Scroll</span>
+      <span class="line"></span>
     </div>
-
   </section>
 
-  <!-- ============ ESSENCE ============ -->
-  <section class="essence" id="essence">
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Wok-fired ✦ Made to order ✦ Fresh — Healthy — High Quality ✦ 94 High Street, Bedford ✦ อร่อยมาก ✦&nbsp;</span>
+      <span>Wok-fired ✦ Made to order ✦ Fresh — Healthy — High Quality ✦ 94 High Street, Bedford ✦ อร่อยมาก ✦&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ============ STORY / PROMISE ============ -->
+  <section class="story on-light" id="story">
+    <span class="sec-num" aria-hidden="true">๑</span>
     <div class="wrap">
-      <div class="essence-grid">
-        <div class="essence-item reveal">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></div>
-          <h3>Fresh</h3><p>Real ingredients, prepped daily</p>
-        </div>
-        <div class="essence-item reveal d1">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M12 2h0M9 2h6"/></svg></div>
-          <h3>Fast</h3><p>Cooked to order in minutes</p>
-        </div>
-        <div class="essence-item reveal d2">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <h3>Local</h3><p>Made in the heart of Bedford</p>
-        </div>
-        <div class="essence-item reveal d3">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6.5 7 .6-5.3 4.7L18.2 21 12 17.3 5.8 21l1.5-7.2L2 9.1l7-.6L12 2Z"/></svg></div>
-          <h3>High quality</h3><p>Flavour you can taste</p>
-        </div>
-      </div>
+      <p class="eyebrow" data-reveal>Our promise</p>
+      <p class="story-line" data-reveal style="--i:1">
+        Real ingredients, prepped every morning. A proper wok over a proper flame.
+        <em>Street food made the Thai way — to walk.</em>
+      </p>
+      <ul class="values">
+        <li data-reveal><span class="v-num">01</span><h3>Fresh</h3><p>Real ingredients, prepped daily</p></li>
+        <li data-reveal style="--i:1"><span class="v-num">02</span><h3>Fast</h3><p>Cooked to order in minutes</p></li>
+        <li data-reveal style="--i:2"><span class="v-num">03</span><h3>Local</h3><p>Made in the heart of Bedford</p></li>
+        <li data-reveal style="--i:3"><span class="v-num">04</span><h3>High quality</h3><p>Flavour you can taste</p></li>
+      </ul>
     </div>
   </section>
 
   <!-- ============ BUILD A BOX ============ -->
-  <section class="steps" id="build">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Your food, your way</span>
-        <h2>Build your box in three steps</h2>
-        <p>Pick your dish, choose your base, top it how you like. Made to order, every time.</p>
+  <section class="build" id="build">
+    <div class="wrap build-grid">
+      <div class="build-intro">
+        <p class="eyebrow" data-reveal>Your food, your way</p>
+        <h2 data-reveal style="--i:1">Build your box in three steps</h2>
+        <p data-reveal style="--i:2">Pick your dish, choose your base, top it how you like. Made to order, every time.</p>
+        <a class="btn btn-dark" href="/menu.html" data-reveal style="--i:3">
+          See the full menu
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
-      <div class="steps-grid">
-        <div class="step-card reveal">
-          <span class="tag">Step 1</span>
-          <div class="step-num">1</div>
-          <h3>Choose your dish</h3>
-          <ul>
-            <li>Stir-fries <span>from £8.50</span></li>
-            <li>Thai curries <span>from £9.75</span></li>
-            <li>Noodle & rice boxes <span>from £10</span></li>
-            <li>Soups <span>from £7.50</span></li>
-          </ul>
-        </div>
-        <div class="step-card reveal d1">
-          <span class="tag">Step 2</span>
-          <div class="step-num">2</div>
-          <h3>Choose your base</h3>
-          <ul>
-            <li>Jasmine rice <span>included</span></li>
-            <li>Fried rice <span>+£1.25</span></li>
-            <li>Fried noodles <span>+£1.25</span></li>
-          </ul>
-        </div>
-        <div class="step-card reveal d2">
-          <span class="tag">Step 3</span>
-          <div class="step-num">3</div>
-          <h3>Choose your topping</h3>
-          <ul>
-            <li>Chicken · Beef · Duck</li>
-            <li>King prawns · Squid</li>
-            <li>Tofu <span>veggie</span></li>
-          </ul>
-        </div>
+
+      <div class="build-steps">
+        <article class="bstep" data-reveal>
+          <span class="thai-num" aria-hidden="true">๑</span>
+          <div>
+            <span class="b-label">Step one</span>
+            <h3>Choose your dish</h3>
+            <ul>
+              <li>Stir-fries <span>from £8.50</span></li>
+              <li>Thai curries <span>from £9.75</span></li>
+              <li>Noodle &amp; rice boxes <span>from £10.00</span></li>
+              <li>Soups <span>from £7.50</span></li>
+            </ul>
+          </div>
+        </article>
+        <article class="bstep" data-reveal>
+          <span class="thai-num" aria-hidden="true">๒</span>
+          <div>
+            <span class="b-label">Step two</span>
+            <h3>Choose your base</h3>
+            <ul>
+              <li>Jasmine rice <span>included</span></li>
+              <li>Fried rice <span>+ £1.25</span></li>
+              <li>Fried noodles <span>+ £1.25</span></li>
+            </ul>
+          </div>
+        </article>
+        <article class="bstep" data-reveal>
+          <span class="thai-num" aria-hidden="true">๓</span>
+          <div>
+            <span class="b-label">Step three</span>
+            <h3>Choose your topping</h3>
+            <ul>
+              <li>Chicken · Beef · Duck</li>
+              <li>King prawns · Squid</li>
+              <li>Tofu <span>veggie</span></li>
+            </ul>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -185,84 +212,94 @@
   <!-- ============ SIGNATURE DISHES ============ -->
   <section class="signature" id="dishes">
     <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">From the kitchen</span>
-        <h2>Signature dishes</h2>
-        <p>A taste of what we do. The full spread lives on the menu.</p>
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>From the kitchen</p>
+        <h2 data-reveal style="--i:1">Signature dishes</h2>
+        <p data-reveal style="--i:2">A taste of what we do. The full spread lives on the menu.</p>
       </div>
+
       <div class="sig-grid">
-        <article class="sig-feature reveal">
-          <img src="/images/dish-noodlebox.png" alt="Thai To Walk noodle box with grilled chicken, peppers and fresh herbs" />
-          <div class="veil"></div>
+        <article class="sig-feature" data-reveal>
+          <span class="pop">Most popular</span>
+          <div class="frame">
+            <img src="/images/dish-noodlebox.png" alt="Thai To Walk noodle box with grilled chicken, peppers and fresh herbs" />
+          </div>
           <div class="meta">
-            <span class="price">£11.75</span>
             <h3>Pad Thai
               <span class="heat" title="Mild to hot">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg>
               </span>
             </h3>
-            <p>Our most popular dish — rice noodles wok-tossed with egg, beansprouts and your choice of topping. Mild or hot.</p>
+            <span class="price">£11.75</span>
           </div>
+          <p class="desc">Our most popular dish — rice noodles wok-tossed with egg, beansprouts and your choice of topping. Mild or hot.</p>
         </article>
-        <div class="sig-side">
-          <article class="sig-card reveal d1">
-            <span class="price">£9.50</span>
+
+        <div class="sig-list">
+          <article class="sig-row" data-reveal>
             <h3>Pad Krapow
               <span class="heat" title="Hot">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg>
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg>
               </span>
             </h3>
+            <span class="price">£9.50</span>
             <p>Spicy stir-fry with chilli, oyster sauce, basil and veg. One for the heat seekers.</p>
           </article>
-          <article class="sig-card reveal d2">
+          <article class="sig-row" data-reveal style="--i:1">
+            <h3>Pad Pong Karee
+              <span class="heat" title="Mild">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg>
+              </span>
+            </h3>
             <span class="price">£9.75</span>
-            <h3>Pad Pong Karee</h3>
             <p>Yellow curry paste with mushrooms and mixed veg — rich, fragrant and just as tasty as the others.</p>
           </article>
+          <article class="sig-row" data-reveal style="--i:2">
+            <h3>Pad Med Ma Muang</h3>
+            <span class="price">£9.50</span>
+            <p>Cashew nuts with oyster sauce and veg — the one with the cashews.</p>
+          </article>
+          <article class="sig-row" data-reveal style="--i:3">
+            <h3>Gra Tiem Prik Tai</h3>
+            <span class="price">£8.50</span>
+            <p>Garlic-fried with oyster sauce and veg. Light and healthy.</p>
+          </article>
+          <div class="sig-foot" data-reveal style="--i:4">
+            <a class="link-draw" href="/menu.html">
+              See the full menu
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
         </div>
-      </div>
-      <div class="sig-foot reveal">
-        <a class="btn btn-dark" href="/menu.html">
-          See the full menu
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
       </div>
     </div>
   </section>
 
   <!-- ============ LOCATION ============ -->
-  <section class="location" id="find">
-    <div class="wrap">
-      <div class="loc-grid">
-        <div class="loc-info reveal">
-          <span class="eyebrow">Find us</span>
-          <h2>In the heart of Bedford</h2>
-          <p class="addr"><strong>Thai To Walk</strong><br />94 High Street<br />Bedford<br />MK40 1NN</p>
-          <div class="loc-detail">
-            <div>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>94 High Street, Bedford, MK40 1NN</span>
-            </div>
-            <div>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-              <span>Hot food, made fresh while you wait</span>
-            </div>
-          </div>
-          <div class="hero-cta" style="margin-top:26px;justify-content:flex-start">
-            <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=94+High+Street+Bedford+MK40+1NN" target="_blank" rel="noopener">
-              Get directions
-            </a>
-          </div>
-        </div>
-        <div class="loc-map reveal d1">
-          <iframe
-            title="Map showing Thai To Walk at 94 High Street, Bedford"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=94+High+Street+Bedford+MK40+1NN&output=embed">
-          </iframe>
-        </div>
+  <section class="location on-light" id="find">
+    <div class="wrap loc-grid">
+      <div class="loc-info">
+        <p class="eyebrow" data-reveal>Find us</p>
+        <h2 data-reveal style="--i:1">In the heart of Bedford</h2>
+        <dl class="loc-docket" data-reveal style="--i:2">
+          <div><dt>Where</dt><dd>94 High Street</dd></div>
+          <div><dt>Town</dt><dd>Bedford</dd></div>
+          <div><dt>Postcode</dt><dd>MK40 1NN</dd></div>
+          <div><dt>Service</dt><dd>Hot food, made while you wait</dd></div>
+        </dl>
+        <a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&query=94+High+Street+Bedford+MK40+1NN" target="_blank" rel="noopener" data-reveal style="--i:3">
+          Get directions
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="loc-map" data-reveal style="--i:1">
+        <iframe
+          title="Map showing Thai To Walk at 94 High Street, Bedford"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=94+High+Street+Bedford+MK40+1NN&output=embed">
+        </iframe>
       </div>
     </div>
   </section>
@@ -293,6 +330,7 @@
         <span>Fresh · Healthy · High Quality</span>
       </div>
     </div>
+    <span class="foot-word" aria-hidden="true">THAI TO WALK</span>
   </footer>
 
   <script src="/js/main.js"></script>

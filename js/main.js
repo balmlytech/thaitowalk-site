@@ -1,22 +1,31 @@
 /* ==========================================================================
-   THAI TO WALK — interactions
+   THAI TO WALK — interactions v2
+   Header state · overlay nav · entrance choreography · scroll reveals ·
+   flame particle canvas (intensity tied to scroll). No dependencies.
    ========================================================================== */
 (function () {
   'use strict';
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- Entrance choreography ---------- */
+  /* html.js is set inline in <head>; .is-loaded releases the hero masks */
+  window.requestAnimationFrame(function () {
+    document.documentElement.classList.add('is-loaded');
+  });
+
   /* ---------- Header scroll state ---------- */
   var header = document.querySelector('.site-header');
+  var headerPinned = header && header.classList.contains('scrolled'); // menu page keeps it solid
   function onScrollHeader() {
-    if (!header) return;
+    if (!header || headerPinned) return;
     if (window.scrollY > 40) header.classList.add('scrolled');
     else header.classList.remove('scrolled');
   }
   onScrollHeader();
   window.addEventListener('scroll', onScrollHeader, { passive: true });
 
-  /* ---------- Mobile nav ---------- */
+  /* ---------- Mobile overlay nav ---------- */
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.querySelector('.nav');
   if (toggle && nav) {
@@ -24,29 +33,32 @@
       var open = nav.classList.toggle('open');
       toggle.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
     });
     nav.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
         nav.classList.remove('open');
         toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
       });
     });
   }
 
   /* ---------- Reveal on scroll ---------- */
-  var reveals = document.querySelectorAll('.reveal');
+  var reveals = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window && !reduceMotion) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.16 });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
     reveals.forEach(function (el) { io.observe(el); });
   } else {
-    reveals.forEach(function (el) { el.classList.add('in'); });
+    reveals.forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  /* ---------- Hero: logo lift + wok shift tied to scroll ---------- */
+  /* ---------- Hero: logo lift tied to scroll ---------- */
   var hero = document.querySelector('.hero');
   var logo = document.querySelector('.hero-logo');
   var heroState = { progress: 0 };
@@ -136,9 +148,9 @@
         var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r);
         // hot white core -> orange -> deep red -> fade. Brand orange #F58220.
         var a = t * 0.55;
-        if (t > 0.72)      { g.addColorStop(0, 'rgba(255,248,224,'+a+')'); g.addColorStop(0.38, 'rgba(255,186,66,'+a*0.85+')'); }
-        else if (t > 0.42) { g.addColorStop(0, 'rgba(255,176,54,'+a+')');  g.addColorStop(0.5, 'rgba(245,130,32,'+a*0.72+')'); }
-        else               { g.addColorStop(0, 'rgba(222,84,18,'+a+')');    g.addColorStop(0.6, 'rgba(150,38,8,'+a*0.5+')'); }
+        if (t > 0.72)      { g.addColorStop(0, 'rgba(255,248,224,' + a + ')'); g.addColorStop(0.38, 'rgba(255,186,66,' + a * 0.85 + ')'); }
+        else if (t > 0.42) { g.addColorStop(0, 'rgba(255,176,54,' + a + ')');  g.addColorStop(0.5, 'rgba(245,130,32,' + a * 0.72 + ')'); }
+        else               { g.addColorStop(0, 'rgba(222,84,18,' + a + ')');    g.addColorStop(0.6, 'rgba(150,38,8,' + a * 0.5 + ')'); }
         g.addColorStop(1, 'rgba(0,0,0,0)');
         ctx.fillStyle = g;
         ctx.beginPath();
