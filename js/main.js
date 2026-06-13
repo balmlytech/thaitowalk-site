@@ -62,7 +62,9 @@
   /* --hp drives the CSS: image scales back to reveal the kitchen, copy fades. */
   var hero = document.querySelector('.hero');
   var heroProgress = 0;
-  function onScrollHero() {
+  var heroTicking = false;
+  function computeHero() {
+    heroTicking = false;
     if (!hero) return;
     // progress = how far we've scrolled through the hero's pinned range (0..1).
     // The hero is taller than the viewport; the pin stays stuck for that surplus.
@@ -75,7 +77,11 @@
     }
     if (!reduceMotion) hero.style.setProperty('--hp', heroProgress.toFixed(4));
   }
-  onScrollHero();
+  // Coalesce scroll events to one update per animation frame (no layout thrash).
+  function onScrollHero() {
+    if (!heroTicking) { heroTicking = true; requestAnimationFrame(computeHero); }
+  }
+  computeHero();
   window.addEventListener('scroll', onScrollHero, { passive: true });
 
   /* ==========================================================================

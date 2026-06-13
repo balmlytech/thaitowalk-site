@@ -218,6 +218,8 @@ section { position: relative; }
   transform: scale(calc(1.18 - 0.18 * var(--hp))) translateY(calc(var(--hp) * -2.5%));
   transform-origin: 62% 58%;
   will-change: transform;
+  /* smooths the discrete jumps of mouse-wheel scrolling into continuous motion */
+  transition: transform 160ms linear;
 }
 .hero-img {
   position: absolute; inset: 0;
@@ -251,6 +253,7 @@ section { position: relative; }
   /* copy parallaxes up and fades as the camera pulls back */
   opacity: calc(1 - var(--hp) * 1.15);
   transform: translateY(calc(var(--hp) * -26px));
+  transition: opacity 160ms linear, transform 160ms linear;
 }
 .hero-copy { max-width: min(92%, 620px); }
 .hero-copy .eyebrow { margin-bottom: clamp(18px, 3vh, 30px); }
@@ -533,16 +536,21 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; }
 }
 
 @media (max-width: 640px) {
+  /* keep the header clear of notches / status bars on real phones */
+  .site-header { padding-top: max(16px, env(safe-area-inset-top)); }
   /* full-screen overlay nav with staggered links */
   .nav {
     position: fixed; inset: 0; z-index: 120;
     background: var(--charcoal);
     flex-direction: column; align-items: flex-start; justify-content: center;
     gap: 4px; padding: 0 var(--gutter);
-    opacity: 0; visibility: hidden;
-    transition: opacity var(--d-fast) ease, visibility 0s linear var(--d-fast);
+    /* a SOLID panel that slides in — never translucent, so page content
+       can't bleed through and overlap the menu text mid-animation */
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform var(--d-med) var(--ease-out), visibility 0s linear var(--d-med);
   }
-  .nav.open { opacity: 1; visibility: visible; transition: opacity var(--d-fast) ease; }
+  .nav.open { transform: none; visibility: visible; transition: transform var(--d-med) var(--ease-out); }
   .nav a {
     font-family: var(--display); font-size: var(--step-2); font-weight: 540;
     color: var(--bone); padding: 10px 0; background: none;
@@ -558,13 +566,20 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; }
   .nav.open a:nth-child(6) { transition-delay: 360ms; }
   .nav .nav-cta { background: none; color: var(--orange); padding: 10px 0; border-radius: 0; }
   .nav-toggle {
-    display: inline-flex; flex-direction: column; gap: 6px; z-index: 130;
-    background: none; border: 0; cursor: pointer; padding: 10px;
+    display: inline-flex; flex-direction: column; gap: 5px; z-index: 130;
+    border: 0; cursor: pointer; padding: 12px; border-radius: 999px;
+    /* a soft dark pill so the icon stays legible over the bright video hero */
+    background: rgba(12, 11, 10, .45);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .3);
+    transition: background var(--d-fast) ease, box-shadow var(--d-fast) ease;
   }
-  .nav-toggle span { width: 26px; height: 1.5px; background: var(--bone); transition: transform var(--d-fast) var(--ease-out), opacity var(--d-fast) ease; }
-  .nav-toggle.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .nav-toggle span { width: 24px; height: 2px; border-radius: 2px; background: var(--bone); transition: transform var(--d-fast) var(--ease-out), opacity var(--d-fast) ease; }
+  /* once it's the X over the full-screen menu, the pill isn't needed */
+  .nav-toggle.open { background: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-toggle.open span:nth-child(2) { opacity: 0; }
-  .nav-toggle.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   .values { grid-template-columns: 1fr; }
   .values li { border-left: 0; padding-left: 0; }
