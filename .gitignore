@@ -6,3 +6,6 @@
 
 # Alternate hero render kept locally for an easy swap, not deployed
 images/hero-wok-alt.jpg
+
+# Dish clips kept locally for in-store use, not deployed to the site
+clips/
