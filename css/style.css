@@ -9,8 +9,8 @@
 
 :root {
   /* Brand colour palette */
-  --orange:       #F58220;
-  --orange-deep:  #D96A10;
+  --orange:       #E25303;  /* RAL 2004 Pure Orange — the shopfront colour */
+  --orange-deep:  #C2410C;
   --ember:        #C2410C;
   --charcoal:     #161412;
   --charcoal-2:   #211D19;
@@ -274,6 +274,11 @@ section { position: relative; }
 .hero-title em {
   font-style: italic; font-weight: 500;
   color: var(--orange);
+}
+.hero-title .hero-wm {
+  font-family: 'Anton', sans-serif; font-weight: 400;
+  letter-spacing: .01em; text-transform: uppercase;
+  color: #fff; white-space: nowrap;
 }
 .hero-sub {
   margin-top: clamp(18px, 3vh, 28px);
