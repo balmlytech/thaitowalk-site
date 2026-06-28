@@ -27,8 +27,9 @@
   <meta name="twitter:image" content="https://thaitowalk.com/images/hero-wok.jpg" />
 
   <!-- Icons -->
-  <link rel="icon" type="image/png" href="/images/logo-icon.png" />
-  <link rel="apple-touch-icon" href="/images/logo-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 
   <!-- Fonts: Fraunces (display) + Hanken Grotesk (body) + Space Mono (dockets) + Chonburi (Thai accents) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -70,6 +71,43 @@
   </script>
 </head>
 <body>
+
+  <!-- ============ COMING SOON — dismissible poster ============ -->
+  <div class="coming-soon" id="comingSoon" role="dialog" aria-modal="true" aria-labelledby="cs-title" hidden>
+    <div class="cs-backdrop" data-cs-dismiss></div>
+    <div class="cs-poster">
+      <div class="cs-grain" aria-hidden="true"></div>
+      <div class="cs-glow" aria-hidden="true"></div>
+      <button type="button" class="cs-close" aria-label="Dismiss" data-cs-dismiss>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+
+      <p class="cs-eyebrow">Thai street food · Halal · est. 2018</p>
+      <img class="cs-mark" src="/images/logo.png" alt="" />
+
+      <h2 class="cs-title" id="cs-title">
+        <span class="cs-soon">Coming&nbsp;Soon</span>
+        <span class="cs-to"><span></span>to<span></span></span>
+        <span class="cs-bedford">Bedford</span>
+      </h2>
+
+      <p class="cs-sub">Fresh, healthy Thai street food — wok-fired to order, hot from our kitchen to your hands.</p>
+
+      <dl class="cs-meta">
+        <div><dt>Where</dt><dd>94 High Street, Bedford</dd></div>
+        <div><dt>When</dt><dd>Tue–Sun · 11:30–22:30</dd></div>
+      </dl>
+
+      <div class="cs-actions">
+        <a class="btn btn-primary" href="/menu.html" data-cs-dismiss>Peek the menu
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <button type="button" class="btn btn-line" data-cs-dismiss>Enter site</button>
+      </div>
+
+      <p class="cs-foot" aria-hidden="true">อร่อยมาก · Healthy food, happy mood</p>
+    </div>
+  </div>
 
   <!-- ============ HEADER ============ -->
   <header class="site-header">

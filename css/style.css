@@ -726,3 +726,110 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; }
 .map-gate svg { width: 30px; height: 30px; color: var(--orange); }
 .map-gate .map-gate-link { font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cream-muted); text-decoration: underline; text-underline-offset: 3px; }
 
+/* ==========================================================================
+   COMING SOON — dismissible digital poster
+   ========================================================================== */
+.coming-soon {
+  position: fixed; inset: 0; z-index: 2000;
+  display: grid; place-items: center;
+  padding: clamp(16px, 4vw, 40px);
+  opacity: 0; transition: opacity .5s var(--ease-out);
+}
+.coming-soon[hidden] { display: none; }
+.coming-soon.is-open { opacity: 1; }
+.coming-soon.is-closing { opacity: 0; }
+body.cs-open { overflow: hidden; }
+
+.cs-backdrop {
+  position: absolute; inset: 0;
+  background: radial-gradient(120% 120% at 50% 0%, rgba(40, 30, 18, .66), rgba(8, 7, 6, .88));
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+
+.cs-poster {
+  position: relative; z-index: 1;
+  width: min(540px, 100%); text-align: center;
+  padding: clamp(30px, 5vw, 52px) clamp(22px, 4vw, 46px) clamp(26px, 4vw, 40px);
+  border-radius: 26px; overflow: hidden;
+  background: linear-gradient(180deg, rgba(43, 38, 32, .97), rgba(18, 16, 14, .98));
+  border: 1px solid var(--hairline-on-dark);
+  box-shadow: 0 40px 120px -30px rgba(0, 0, 0, .8), inset 0 1px 0 rgba(255, 255, 255, .05);
+  transform: translateY(16px) scale(.97);
+  transition: transform .6s var(--ease-out);
+}
+.coming-soon.is-open .cs-poster { transform: none; }
+.coming-soon.is-closing .cs-poster { transform: translateY(8px) scale(.99); }
+
+.cs-glow {
+  position: absolute; left: 50%; top: -34%; width: 130%; height: 76%;
+  transform: translateX(-50%); pointer-events: none; filter: blur(8px);
+  background: radial-gradient(closest-side, rgba(245, 130, 32, .36), transparent 72%);
+}
+.cs-grain {
+  position: absolute; inset: 0; pointer-events: none; opacity: .5; mix-blend-mode: overlay;
+  background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, .04) 0 1px, transparent 1px 3px);
+}
+
+.cs-close {
+  position: absolute; top: 14px; right: 14px; z-index: 3;
+  width: 38px; height: 38px; display: grid; place-items: center;
+  border-radius: 50%; cursor: pointer;
+  border: 1px solid rgba(246, 240, 230, .18); background: rgba(20, 18, 16, .5);
+  color: var(--cream-muted);
+  transition: color var(--d-fast) ease, border-color var(--d-fast) ease, transform var(--d-fast) ease;
+}
+.cs-close svg { width: 18px; height: 18px; }
+.cs-close:hover { color: var(--orange); border-color: var(--orange); transform: rotate(90deg); }
+
+.cs-poster .cs-eyebrow {
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 14px;
+}
+.cs-mark {
+  height: clamp(84px, 15vw, 122px); width: auto; margin: 0 auto 16px; display: block;
+  filter: drop-shadow(0 12px 26px rgba(245, 130, 32, .28));
+}
+
+.cs-title { display: flex; flex-direction: column; align-items: center; line-height: .9; }
+.cs-title .cs-soon {
+  font-family: 'Anton', var(--display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(2.5rem, 10vw, 4.2rem); letter-spacing: .01em; color: var(--bone);
+}
+.cs-title .cs-to {
+  display: flex; align-items: center; gap: 12px; margin: 6px 0;
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--cream-muted);
+}
+.cs-title .cs-to span { width: 34px; height: 1px; background: linear-gradient(90deg, transparent, rgba(246, 240, 230, .5)); }
+.cs-title .cs-to span:last-child { background: linear-gradient(90deg, rgba(246, 240, 230, .5), transparent); }
+.cs-title .cs-bedford {
+  font-family: 'Anton', var(--display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(3rem, 13vw, 5.2rem); letter-spacing: .005em;
+  background: linear-gradient(100deg, var(--orange) 32%, #ffd9a8 50%, var(--orange) 68%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+  filter: drop-shadow(0 0 26px rgba(245, 130, 32, .5));
+  animation: csShine 5s linear infinite;
+}
+@keyframes csShine { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+
+.cs-sub { margin: 20px auto 0; max-width: 34ch; font-size: clamp(.92rem, 2.4vw, 1rem); color: var(--cream-muted); }
+
+.cs-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 30px; margin: 22px 0 26px; }
+.cs-meta dt { font-family: var(--mono); font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); margin-bottom: 4px; }
+.cs-meta dd { font-size: .9rem; color: var(--bone); }
+
+.cs-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.cs-foot { margin-top: 22px; font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; color: rgba(246, 240, 230, .42); }
+
+@media (max-width: 460px) {
+  .cs-poster { border-radius: 20px; }
+  .cs-actions .btn { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .coming-soon, .cs-poster { transition: opacity .2s ease; }
+  .cs-poster { transform: none; }
+  .cs-bedford { animation: none; }
+  .cs-close:hover { transform: none; }
+}
+
