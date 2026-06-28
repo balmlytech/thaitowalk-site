@@ -493,6 +493,8 @@ html.js .sig-feature.is-in .frame img, html.js .sig-feature.is-in .frame video {
   aspect-ratio: 16 / 9; background: var(--charcoal-2);
   border: 1px solid var(--hairline-on-dark);
 }
+a.kclip { text-decoration: none; cursor: pointer; transition: transform var(--d-fast) var(--ease-out), border-color var(--d-fast) ease; }
+a.kclip:hover, a.kclip:focus-visible { transform: translateY(-3px); border-color: var(--orange); }
 .kclip video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .kclip .kc-label {
   position: absolute; inset: auto 0 0 0; z-index: 2;
