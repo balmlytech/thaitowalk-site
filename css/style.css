@@ -436,11 +436,11 @@ html.js .hero-cta { transition-delay: 520ms; }
   aspect-ratio: 1 / 1;
   background: var(--charcoal-2);
 }
-.sig-feature .frame img {
-  width: 100%; height: 100%; object-fit: cover;
+.sig-feature .frame img, .sig-feature .frame video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
 }
-html.js .sig-feature .frame img { transform: scale(1.12); transition: transform 1.4s var(--ease-out); }
-html.js .sig-feature.is-in .frame img { transform: scale(1); }
+html.js .sig-feature .frame img, html.js .sig-feature .frame video { transform: scale(1.12); transition: transform 1.4s var(--ease-out); }
+html.js .sig-feature.is-in .frame img, html.js .sig-feature.is-in .frame video { transform: scale(1); }
 .sig-feature .meta { margin-top: 22px; display: flex; align-items: baseline; justify-content: space-between; gap: 18px; }
 .sig-feature .meta h3 { font-size: var(--step-2); font-weight: 560; }
 .sig-feature .meta .price { font-family: var(--mono); font-size: var(--step-1); color: var(--orange); }
@@ -616,7 +616,7 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; }
   html.js [data-reveal],
   html.js .hero-title .line > span,
   html.js .hero-eyebrow, html.js .hero-sub, html.js .hero-cta { opacity: 1; transform: none; }
-  html.js .sig-feature .frame img { transform: none; }
+  html.js .sig-feature .frame img, html.js .sig-feature .frame video { transform: none; }
   .marquee-track { animation: none !important; }
   /* no pinned scroll-scrub: collapse the hero to a normal full-screen panel */
   .hero { height: auto; min-height: 100svh; }
