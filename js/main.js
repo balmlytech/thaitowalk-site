@@ -126,31 +126,51 @@
   /* ---------- Dish clips: lazy-load + play only in view (perf + reduced motion) ---------- */
   var dishClips = document.querySelectorAll('video.dish-clip');
   if (dishClips.length) {
+    // iOS won't paint a video frame until it plays OR seeks — so nudge the
+    // playhead once metadata is in, guaranteeing a still frame instead of a
+    // black box even when muted autoplay is blocked (Low Power / Low Data).
+    var paintFrame = function (v) {
+      var seek = function () {
+        try { if (v.currentTime < 0.04) v.currentTime = 0.04; } catch (e) {}
+        v.removeEventListener('loadedmetadata', seek);
+      };
+      v.addEventListener('loadedmetadata', seek);
+    };
+    var loadClip = function (v) {
+      if (!v.src && v.dataset.src) { paintFrame(v); v.src = v.dataset.src; }
+    };
+    var playClip = function (v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+
     if (reduceMotion) {
-      // first frame as a still; never autoplay
-      dishClips.forEach(function (v) {
-        if (v.dataset.src && !v.src) { v.src = v.dataset.src; }
-        v.preload = 'metadata';
-      });
-    } else if ('IntersectionObserver' in window) {
-      var clipIO = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          var v = e.target;
-          if (e.isIntersecting) {
-            if (!v.src && v.dataset.src) { v.src = v.dataset.src; }
-            var p = v.play();
-            if (p && p.catch) p.catch(function () {});
-          } else if (!v.paused) {
-            v.pause();
-          }
-        });
-      }, { rootMargin: '200px 0px', threshold: 0.25 });
-      dishClips.forEach(function (v) { clipIO.observe(v); });
+      dishClips.forEach(function (v) { v.preload = 'metadata'; loadClip(v); });
     } else {
-      dishClips.forEach(function (v) {
-        if (v.dataset.src) { v.src = v.dataset.src; }
-        var p = v.play(); if (p && p.catch) p.catch(function () {});
-      });
+      if ('IntersectionObserver' in window) {
+        var clipIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            var v = e.target;
+            if (e.isIntersecting) { loadClip(v); playClip(v); }
+            else if (!v.paused) { v.pause(); }
+          });
+        }, { rootMargin: '200px 0px', threshold: 0.25 });
+        dishClips.forEach(function (v) { clipIO.observe(v); });
+      } else {
+        dishClips.forEach(function (v) { loadClip(v); playClip(v); });
+      }
+
+      // iOS Safari can refuse muted autoplay (Low Power / Low Data Mode).
+      // The first real tap anywhere (e.g. dismissing the poster) unlocks
+      // media — resume any loaded-but-paused clip that's on screen.
+      var inView = function (v) {
+        var r = v.getBoundingClientRect();
+        return r.bottom > 0 && r.top < window.innerHeight;
+      };
+      var kickClips = function () {
+        dishClips.forEach(function (v) {
+          if (v.paused && inView(v)) { loadClip(v); playClip(v); }
+        });
+      };
+      window.addEventListener('touchend', kickClips, { passive: true });
+      window.addEventListener('click', kickClips);
     }
   }
 
