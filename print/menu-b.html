@@ -2,203 +2,198 @@
 <html lang="en-GB">
 <head>
 <meta charset="UTF-8" />
-<title>Thai To Walk — Print Menu (Variant B · faithful)</title>
+<title>Thai To Walk — Print Menu (Variant B · cream · photo per dish)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Chonburi&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Chonburi&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="menu-print.css" />
 <style>
-  /* ---------- Variant B — Hawker Board (photo per dish) ---------- */
-  .front { display: grid; grid-template-columns: 96mm 92mm 88mm 1fr; gap: 7mm; height: 100%; position: relative; }
+  /* ---------- Variant B · cream — photo per dish ---------- */
+  .cols3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 9mm; height: 100%; }
   .col { display: flex; flex-direction: column; min-height: 0; }
 
-  .sec-head { margin-bottom: 4mm; }
-  .sec-head h2 { font-size: 19pt; }
-  .sec-head .num { font-size: 19pt; }
-  .sec-note { font-family: var(--mono); font-size: 7pt; letter-spacing: .04em; color: var(--cream-muted); margin: -2mm 0 4mm; line-height: 1.4; }
+  .sec-head { margin-bottom: 3mm; padding-bottom: 2mm; border-bottom: 1.5px solid var(--hair-orange); }
+  .sec-head h2 { font-size: 18pt; }
+  .sec-head .num { font-size: 18pt; }
+  .sec-note { font-family: var(--mono); font-size: 7pt; letter-spacing: .03em; color: var(--ink-muted); margin: 0 0 3mm; line-height: 1.4; }
+  .blk { margin-bottom: 6mm; }
+  .blk:last-child { margin-bottom: 0; }
 
-  /* Photo dish card */
   .card { display: grid; grid-template-columns: 13mm 1fr; gap: 3mm; padding: 2.4mm 0; border-top: 1px solid var(--hair); }
-  .col .cards .card:first-child { border-top: 0; }
-  .thumb { width: 13mm; height: 13mm; border-radius: 7px; overflow: hidden; background: var(--charcoal-3);
+  .cards .card:first-child { border-top: 0; }
+  .thumb { width: 13mm; height: 13mm; border-radius: 7px; overflow: hidden; background: var(--cream-3);
            border: 1px solid var(--hair-orange); display: flex; align-items: center; justify-content: center; flex: none; }
   .thumb img { width: 100%; height: 100%; object-fit: cover; }
-  .thumb.ph svg { width: 18px; height: 18px; stroke: var(--orange); fill: none; opacity: .85; }
+  .thumb.ph svg { width: 18px; height: 18px; stroke: var(--orange-deep); fill: none; opacity: .8; }
   .cbody { min-width: 0; }
   .crow { display: flex; align-items: baseline; gap: 6px; }
-  .crow h3 { font-family: var(--display); font-weight: 560; font-size: 11.5pt; margin: 0; line-height: 1.12; flex: 1; }
-  .crow .dn { font-family: var(--mono); font-weight: 700; font-size: 8pt; color: var(--orange); margin-right: 2px; }
+  .crow h3 { font-family: var(--display); font-weight: 560; font-size: 11.5pt; margin: 0; line-height: 1.12; flex: 1; color: var(--ink); }
+  .crow .dn { font-family: var(--mono); font-weight: 700; font-size: 8pt; color: var(--orange-deep); margin-right: 2px; }
   .crow .price { font-size: 9.5pt; }
-  .card p { margin: 1mm 0 0; font-size: 8pt; line-height: 1.34; color: var(--cream-muted); font-style: italic; }
-
-  /* Option price lines inside a card */
+  .card p { margin: 1mm 0 0; font-size: 8pt; line-height: 1.34; color: var(--ink-muted); font-style: italic; }
   .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 0 6mm; margin-top: 1.5mm; }
   .opts li { list-style: none; display: flex; justify-content: space-between; gap: 6px; font-size: 8pt; padding: 1mm 0; border-bottom: 1px dotted var(--hair); }
-  .opts li span { font-family: var(--mono); font-size: 7.5pt; color: var(--orange); }
+  .opts li span { font-family: var(--mono); font-size: 7.5pt; color: var(--orange-deep); }
 
-  /* Side price lists (extras/topping/drinks/desserts) */
-  .plist { margin: 0 0 4mm; padding: 0; }
-  .plist .ph2 { font-family: var(--mono); font-size: 7pt; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin: 0 0 1.5mm; }
-  .plist li { list-style: none; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 8.5pt; padding: 1.4mm 0; border-bottom: 1px solid var(--hair); }
-  .plist li span { font-family: var(--mono); font-size: 8pt; color: var(--orange); white-space: nowrap; }
-  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 0 6mm; }
+  .plist { margin: 0; padding: 0; }
+  .plist .ph2 { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-deep); margin: 0 0 1.5mm; }
+  .plist li { list-style: none; display: flex; align-items: baseline; gap: 8px; font-size: 9pt; padding: 1.7mm 0; border-top: 1px solid var(--hair); }
+  .plist li:first-of-type { border-top: 0; }
+  .plist li .lead { flex: 1; border-bottom: 1px dotted var(--hair-strong); transform: translateY(-3px); }
+  .plist li span.p { font-family: var(--mono); font-size: 8.5pt; color: var(--orange-deep); white-space: nowrap; }
 
-  /* ---------- BACK ---------- */
-  .back { display: flex; flex-direction: column; height: 100%; gap: 6mm; position: relative; }
-  .build {
-    background: var(--black); border: 1px solid var(--hair-orange); border-radius: 10px;
-    padding: 6mm 8mm; display: grid; grid-template-columns: auto 1fr; gap: 0 10mm; align-items: center;
-  }
-  .build-title { display: flex; flex-direction: column; gap: 2mm; padding-right: 9mm; border-right: 1px solid var(--hair); }
-  .build-title h2 { font-family: var(--display); font-weight: 600; font-size: 22pt; margin: 0; line-height: 1; }
-  .build-title h2 em { color: var(--orange); font-style: italic; }
-  .build-title p { margin: 0; font-size: 8.5pt; color: var(--cream-muted); max-width: 48mm; }
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8mm; }
-  .step { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: start; }
-  .step .n { font-family: var(--thai); font-size: 22pt; line-height: .9; color: var(--orange); }
-  .step b { font-weight: 600; font-size: 10pt; }
-  .step .d { display: block; font-size: 8pt; color: var(--cream-muted); margin-top: 1mm; line-height: 1.4; }
-  .step .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2mm; }
-  .step .chips span { font-family: var(--mono); font-size: 6.8pt; letter-spacing: .04em; padding: 2px 7px; border-radius: 999px; background: rgba(245,130,32,.10); border: 1px solid var(--hair-orange); color: var(--bone); }
-
-  .back-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7mm; flex: 1; min-height: 0; }
-  .back-foot { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-top: 4mm; border-top: 1px solid var(--hair); }
-  .back-foot .allergy { text-align: left; flex: 1; }
+  /* Build-your-box band (back) */
+  .build { background: var(--cream-2); border: 1px solid var(--hair-orange); border-radius: 12px; padding: 5mm 7mm; margin-bottom: 6mm; }
+  .build-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 3mm; }
+  .build-head h2 { font-family: var(--display); font-weight: 600; font-size: 16pt; margin: 0; color: var(--ink); }
+  .build-head h2 em { color: var(--orange-deep); font-style: italic; }
+  .build-head p { margin: 0; font-size: 8pt; color: var(--ink-muted); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7mm; }
+  .step { display: grid; grid-template-columns: auto 1fr; gap: 8px; }
+  .step .n { font-family: var(--thai); font-size: 18pt; line-height: .9; color: var(--orange); }
+  .step b { font-weight: 600; font-size: 9.5pt; color: var(--ink); }
+  .step .d { display: block; font-size: 7.8pt; color: var(--ink-muted); margin-top: .8mm; line-height: 1.4; }
+  .step .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 1.5mm; }
+  .step .chips span { font-family: var(--mono); font-size: 6.8pt; padding: 2px 7px; border-radius: 999px; background: rgba(231,91,18,.10); border: 1px solid var(--hair-orange); color: var(--ink-soft); }
 </style>
 </head>
 <body>
 
 <!-- ============================ PAGE 1 · FRONT ============================ -->
 <section class="page">
-  <div class="front">
 
-    <!-- COL 1 — SNACKS -->
-    <div class="col">
-      <div class="sec-head"><h2 class="fr">Snacks</h2><span class="num thai">๑</span></div>
-      <p class="sec-note">Each homemade snack — 4 pieces, with Thai sweet chilli sauce.</p>
-      <div class="cards">
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">01</span>Kaew Krop</h3><span class="price">£5.50</span></div><p>Minced chicken &amp; seafood.</p></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">02</span>Goong Tempura</h3><span class="price">£6.75</span></div><p>Fried king prawns.</p></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">03</span>Gai Ho Bai Toey</h3><span class="price">£6.50</span></div><p>Chicken cubes with sesame, in pandan leaf.</p></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">04</span>Pho Pia Gai</h3><span class="price">£6.00</span></div><p>Fried Thai chicken spring roll.</p></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">05</span>Gai Satay</h3><span class="price">£7.00</span></div><p>Chicken satay with peanut sauce.</p></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">06</span>Tofu Satay <span class="tag">Veggie</span></h3><span class="price">£6.50</span></div><p>With peanut sauce.</p></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">07</span>Tod Mun Pla</h3><span class="price">£7.00</span></div><p>Thai fish cake.</p></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">08</span>Prawn Toast</h3><span class="price">£8.00</span></div></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">09</span>Pangsit</h3><span class="price">£6.00</span></div><p>Chicken mince with sesame seeds.</p></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">10</span>Pho Pia Je <span class="tag">Veggie</span></h3><span class="price">£5.75</span></div><p>Fried vegetable spring roll.</p></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">11</span>Mini Veg Spring Rolls <span class="tag">Veggie</span></h3><span class="price">£5.25</span></div><p>10 mini vegetable spring rolls.</p></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">12</span>Goong Hom Pha</h3><span class="price">£6.75</span></div><p>Fried king prawns spring roll.</p></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">13</span>Kha Duk Thod</h3><span class="price">£10.00</span></div><p>Spare ribs.</p></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">14</span>Mixed Platter</h3><span class="price">£15.00</span></div><p>Two pieces of each — with sweet chilli &amp; satay sauce.</p></div></article>
+  <div class="masthead">
+    <div class="lockup"><img src="../images/logo.png" alt="" /><span class="wm">Thai To Walk</span></div>
+    <div class="mast-right">
+      <p class="tl">Authentic Thai cuisine</p>
+      <p class="sub">Healthy food, happy mood</p>
+      <div class="mast-badges">
+        <span class="mbadge halal"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Halal</span>
+        <span class="mbadge">Since 2018</span>
+        <span class="mast-hygiene"><span class="lbl">HYGIENE<br />RATING</span><span class="score">5</span></span>
       </div>
     </div>
-
-    <!-- COL 2 — SOUPS + SALAD -->
-    <div class="col">
-      <div class="sec-head"><h2 class="fr">Soups</h2><span class="num thai">๒</span></div>
-      <div class="cards">
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">15</span>Tom Kha</h3></div><p>Thai soup with coconut milk.</p><ul class="opts"><li>Chicken <span>£6.50</span></li><li>Beef <span>£6.75</span></li><li>King prawn <span>£7.25</span></li></ul></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">16</span>Tom Yam <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3></div><p>Thai soup with lemon grass.</p><ul class="opts"><li>Chicken <span>£6.50</span></li><li>Beef <span>£6.75</span></li><li>King prawn <span>£7.25</span></li><li>Seafood <span>£8.00</span></li></ul></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">17</span>Kway Teow Nam</h3><span class="price">£7.50</span></div><p>Noodle soup with chicken &amp; vegetables.</p></div></article>
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">18</span>Kaew Nam</h3><span class="price">£7.50</span></div><p>Wonton soup — minced chicken, seafood &amp; veg.</p></div></article>
-      </div>
-
-      <div class="sec-head" style="margin-top:6mm"><h2 class="fr">Salads</h2><span class="num thai">๓</span></div>
-      <div class="cards">
-        <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">19</span>Thai Salad <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3></div><p>Tomatoes, cucumber, red onion &amp; fresh chillies.</p><ul class="opts"><li>Chicken <span>£8.00</span></li><li>Beef <span>£8.50</span></li><li>Tofu <span>£7.75</span></li><li>King prawn <span>£8.75</span></li><li>Seafood <span>£9.00</span></li></ul></div></article>
-      </div>
-    </div>
-
-    <!-- COL 3 — EXTRAS / TOPPINGS / DRINKS / DESSERTS -->
-    <div class="col">
-      <ul class="plist">
-        <li class="ph2" style="border:0">Extras</li>
-        <li>Chips <span>£3.00</span></li>
-        <li>Prawn crackers <span>£4.00</span></li>
-        <li>Satay sauce <span>£1.50</span></li>
-        <li>Thai chilli sauce <span>£3.00</span></li>
-        <li>Brown chilli sauce <span>£4.00</span></li>
-      </ul>
-      <ul class="plist">
-        <li class="ph2" style="border:0">Extra topping</li>
-        <li>King prawns <span>£3.00</span></li>
-        <li>Beef <span>£3.00</span></li>
-        <li>Chicken <span>£3.00</span></li>
-        <li>Duck <span>£3.00</span></li>
-        <li>Vegetables <span>£2.50</span></li>
-        <li>Tofu <span>£2.00</span></li>
-      </ul>
-      <ul class="plist">
-        <li class="ph2" style="border:0">Drinks</li>
-        <li>Red Bull · light or regular <span>£2.50</span></li>
-        <li>Cans · fizzy 330ml <span>£1.75</span></li>
-        <li>Mango juice <span>£2.75</span></li>
-        <li>Lychee juice <span>£2.75</span></li>
-        <li>Aloe vera <span>£2.75</span></li>
-        <li>Still water · 500ml <span>£2.25</span></li>
-        <li>Water · large 1.5L <span>£3.75</span></li>
-      </ul>
-      <ul class="plist">
-        <li class="ph2" style="border:0">Desserts</li>
-        <li>Ben &amp; Jerry’s · 500ml <span>£7.00</span></li>
-        <li>Chocolate Toothpaste <span>£3.00</span></li>
-      </ul>
-    </div>
-
-    <!-- COL 4 — BRAND HERO -->
-    <div class="col">
-      <div class="brand-hero">
-        <div class="bh-top">
-          <img class="bh-logo" src="../images/logo.png" alt="Thai To Walk" />
-          <h1 class="bh-title">Authentic<br /><em>Thai</em> cuisine</h1>
-          <p class="bh-tagline">Healthy food, happy mood</p>
-          <div class="bh-badges">
-            <span class="bh-badge halal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Halal</span>
-            <span class="bh-badge">Since 2018</span>
-          </div>
-        </div>
-
-        <div class="bh-info">
-          <div class="bh-row">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            <div><span class="k">Opening times</span><span class="v"><b>Tue – Sun · 11:30am – 10:30pm</b><br /><span class="muted">Monday: closed</span></span></div>
-          </div>
-          <div class="bh-row">
-            <svg viewBox="0 0 24 24"><path d="M12 21s-7-5.7-7-11a7 7 0 0 1 14 0c0 5.3-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-            <div><span class="k">Find us</span><span class="v"><b>94 High Street, Bedford</b><br /><span class="muted">MK40 1NN</span></span></div>
-          </div>
-          <div class="bh-delivery">
-            <span class="k">Delivery</span>
-            <div class="v">Within 3 miles <b>£2.50</b> · over 3 miles <b>£3.00</b></div>
-          </div>
-        </div>
-
-        <div class="bh-foot">
-          <div class="bh-socials">
-            <svg viewBox="0 0 24 24"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3v12a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.5a5.6 5.6 0 1 0 4.8 5.6V9.3a7.2 7.2 0 0 0 4 1.2V7.5a4.3 4.3 0 0 1-3-1.7Z"/></svg>
-            <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" fill="none" stroke="#F6F0E6" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="#F6F0E6" stroke-width="1.8"/><circle cx="17" cy="7" r="1.2"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M14 8.5h2.2V5.6c-.4-.05-1.5-.16-2.7-.16-2.7 0-4.5 1.65-4.5 4.66V12H6.3v3h2.7v7h3.3v-7h2.6l.4-3h-3v-1.6c0-.86.23-1.4 1.4-1.4Z"/></svg>
-          </div>
-          <span class="bh-web">thaitowalk.com</span>
-          <div class="hygiene"><span class="lbl">FOOD HYGIENE<br />RATING</span><span class="score">5</span></div>
-        </div>
-      </div>
-    </div>
-
   </div>
+
+  <!-- Swap .ph for <img src="../images/hero-boxes.png" alt="Our noodle boxes"> once the file is added -->
+  <div class="hero-band"><div class="ph">Hero photo · the three noodle boxes (add images/hero-boxes.png)</div></div>
+
+  <div class="page-body">
+    <div class="cols3">
+
+      <!-- COL 1 — SNACKS -->
+      <div class="col">
+        <div class="sec-head"><h2 class="fr">Snacks</h2><span class="num thai">๑</span></div>
+        <p class="sec-note">Each homemade snack — 4 pieces, with Thai sweet chilli sauce.</p>
+        <div class="cards">
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">01</span>Kaew Krop</h3><span class="price">£5.50</span></div><p>Minced chicken &amp; seafood.</p></div></article>
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">02</span>Goong Tempura</h3><span class="price">£6.75</span></div><p>Fried king prawns.</p></div></article>
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">03</span>Gai Ho Bai Toey</h3><span class="price">£6.50</span></div><p>Chicken cubes with sesame, in pandan leaf.</p></div></article>
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">04</span>Pho Pia Gai</h3><span class="price">£6.00</span></div><p>Fried Thai chicken spring roll.</p></div></article>
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">05</span>Gai Satay</h3><span class="price">£7.00</span></div><p>Chicken satay with peanut sauce.</p></div></article>
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">06</span>Tofu Satay <span class="tag">Veggie</span></h3><span class="price">£6.50</span></div><p>With peanut sauce.</p></div></article>
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">07</span>Tod Mun Pla</h3><span class="price">£7.00</span></div><p>Thai fish cake.</p></div></article>
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">08</span>Prawn Toast</h3><span class="price">£8.00</span></div></div></article>
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">09</span>Pangsit</h3><span class="price">£6.00</span></div><p>Chicken mince with sesame seeds.</p></div></article>
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">10</span>Pho Pia Je <span class="tag">Veggie</span></h3><span class="price">£5.75</span></div><p>Fried vegetable spring roll.</p></div></article>
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">11</span>Mini Veg Spring Rolls <span class="tag">Veggie</span></h3><span class="price">£5.25</span></div><p>10 mini vegetable spring rolls.</p></div></article>
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">12</span>Goong Hom Pha</h3><span class="price">£6.75</span></div><p>Fried king prawns spring roll.</p></div></article>
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">13</span>Kha Duk Thod</h3><span class="price">£10.00</span></div><p>Spare ribs.</p></div></article>
+          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">14</span>Mixed Platter</h3><span class="price">£15.00</span></div><p>Two pieces of each — with sweet chilli &amp; satay sauce.</p></div></article>
+        </div>
+      </div>
+
+      <!-- COL 2 — SOUPS + SALAD -->
+      <div class="col">
+        <div class="blk">
+          <div class="sec-head"><h2 class="fr">Soups</h2><span class="num thai">๒</span></div>
+          <div class="cards">
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">15</span>Tom Kha</h3></div><p>Thai soup with coconut milk.</p><ul class="opts"><li>Chicken <span>£6.50</span></li><li>Beef <span>£6.75</span></li><li>King prawn <span>£7.25</span></li></ul></div></article>
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">16</span>Tom Yam <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3></div><p>Thai soup with lemon grass.</p><ul class="opts"><li>Chicken <span>£6.50</span></li><li>Beef <span>£6.75</span></li><li>King prawn <span>£7.25</span></li><li>Seafood <span>£8.00</span></li></ul></div></article>
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">17</span>Kway Teow Nam</h3><span class="price">£7.50</span></div><p>Noodle soup with chicken &amp; vegetables.</p></div></article>
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">18</span>Kaew Nam</h3><span class="price">£7.50</span></div><p>Wonton soup — minced chicken, seafood &amp; veg.</p></div></article>
+          </div>
+        </div>
+
+        <div class="blk">
+          <div class="sec-head"><h2 class="fr">Salads</h2><span class="num thai">๓</span></div>
+          <div class="cards">
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">19</span>Thai Salad <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3></div><p>Tomatoes, cucumber, red onion &amp; fresh chillies.</p><ul class="opts"><li>Chicken <span>£8.00</span></li><li>Beef <span>£8.50</span></li><li>Tofu <span>£7.75</span></li><li>King prawn <span>£8.75</span></li><li>Seafood <span>£9.00</span></li></ul></div></article>
+          </div>
+        </div>
+      </div>
+
+      <!-- COL 3 — EXTRAS / TOPPINGS / DRINKS / DESSERTS -->
+      <div class="col">
+        <div class="blk"><ul class="plist">
+          <li class="ph2">Extras</li>
+          <li>Chips <span class="lead"></span><span class="p">£3.00</span></li>
+          <li>Prawn crackers <span class="lead"></span><span class="p">£4.00</span></li>
+          <li>Satay sauce <span class="lead"></span><span class="p">£1.50</span></li>
+          <li>Thai chilli sauce <span class="lead"></span><span class="p">£3.00</span></li>
+          <li>Brown chilli sauce <span class="lead"></span><span class="p">£4.00</span></li>
+        </ul></div>
+        <div class="blk"><ul class="plist">
+          <li class="ph2">Extra topping</li>
+          <li>King prawns <span class="lead"></span><span class="p">£3.00</span></li>
+          <li>Beef <span class="lead"></span><span class="p">£3.00</span></li>
+          <li>Chicken <span class="lead"></span><span class="p">£3.00</span></li>
+          <li>Duck <span class="lead"></span><span class="p">£3.00</span></li>
+          <li>Vegetables <span class="lead"></span><span class="p">£2.50</span></li>
+          <li>Tofu <span class="lead"></span><span class="p">£2.00</span></li>
+        </ul></div>
+        <div class="blk"><ul class="plist">
+          <li class="ph2">Drinks</li>
+          <li>Red Bull · light or regular <span class="lead"></span><span class="p">£2.50</span></li>
+          <li>Cans · fizzy 330ml <span class="lead"></span><span class="p">£1.75</span></li>
+          <li>Mango juice <span class="lead"></span><span class="p">£2.75</span></li>
+          <li>Lychee juice <span class="lead"></span><span class="p">£2.75</span></li>
+          <li>Aloe vera <span class="lead"></span><span class="p">£2.75</span></li>
+          <li>Still water · 500ml <span class="lead"></span><span class="p">£2.25</span></li>
+          <li>Water · large 1.5L <span class="lead"></span><span class="p">£3.75</span></li>
+        </ul></div>
+        <div class="blk"><ul class="plist">
+          <li class="ph2">Desserts</li>
+          <li>Ben &amp; Jerry’s · 500ml <span class="lead"></span><span class="p">£7.00</span></li>
+          <li>Chocolate Toothpaste <span class="lead"></span><span class="p">£3.00</span></li>
+        </ul></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="foot-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><span class="k">Opening times</span><span class="v"><b>Tue – Sun · 11:30am – 10:30pm</b><br /><span class="muted">Monday: closed</span></span></div></div>
+    <div class="foot-sep"></div>
+    <div class="foot-cell"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.7-7-11a7 7 0 0 1 14 0c0 5.3-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><div><span class="k">Find us</span><span class="v"><b>94 High Street, Bedford</b> <span class="muted">MK40 1NN</span></span></div></div>
+    <div class="foot-sep"></div>
+    <div class="foot-cell foot-delivery"><svg viewBox="0 0 24 24"><path d="M3 13h11V6H3zM14 9h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg><div><span class="k">Delivery</span><span class="v">Within 3 mi <b>£2.50</b> · over 3 mi <b>£3.00</b></span></div></div>
+    <div class="foot-spacer"></div>
+    <div class="foot-socials">
+      <svg viewBox="0 0 24 24"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3v12a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.5a5.6 5.6 0 1 0 4.8 5.6V9.3a7.2 7.2 0 0 0 4 1.2V7.5a4.3 4.3 0 0 1-3-1.7Z"/></svg>
+      <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" fill="none" stroke="#F6F0E6" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="#F6F0E6" stroke-width="1.8"/><circle cx="17" cy="7" r="1.2"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M14 8.5h2.2V5.6c-.4-.05-1.5-.16-2.7-.16-2.7 0-4.5 1.65-4.5 4.66V12H6.3v3h2.7v7h3.3v-7h2.6l.4-3h-3v-1.6c0-.86.23-1.4 1.4-1.4Z"/></svg>
+      <span class="foot-web">thaitowalk.com</span>
+    </div>
+  </div>
+
 </section>
 
 <!-- ============================ PAGE 2 · BACK ============================ -->
 <section class="page">
-  <div class="back">
 
-    <!-- BUILD YOUR BOX -->
+  <div class="masthead">
+    <div class="lockup"><img src="../images/logo.png" alt="" /><span class="wm">Thai To Walk</span></div>
+    <div class="mast-right">
+      <p class="tl">Wok &amp; curry</p>
+      <p class="sub">Build your box in 3 steps</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+
     <div class="build">
-      <div class="build-title">
-        <h2 class="fr">Build your <em>box</em></h2>
-        <p>Wok dishes 20–31 — pick a dish, a base &amp; a topping.</p>
-      </div>
+      <div class="build-head"><h2 class="fr">Build your <em>box</em></h2><p>Wok dishes 20–31 — pick a dish, a base &amp; a topping.</p></div>
       <div class="steps">
         <div class="step"><span class="n thai">๑</span><div><b>Choose a dish</b><span class="d">Any wok dish below, 20–31.</span></div></div>
         <div class="step"><span class="n thai">๒</span><div><b>Choose a base</b><span class="d">Jasmine rice included.</span><div class="chips"><span>Egg fried rice +£1.25</span><span>Egg noodles +£1.25</span></div></div></div>
@@ -206,7 +201,7 @@
       </div>
     </div>
 
-    <div class="back-grid">
+    <div class="cols3">
 
       <!-- COL 1 — WOK DISHES -->
       <div class="col">
@@ -224,54 +219,64 @@
 
       <!-- COL 2 — CURRY (no coconut) + PAD THAI -->
       <div class="col">
-        <div class="sec-head"><h2 class="fr">Curry Wok</h2><span class="num thai">๕</span></div>
-        <p class="sec-note">Without coconut milk · with your base &amp; topping.</p>
-        <div class="cards">
-          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">26</span>Pad Ped <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3><span class="price">£9.75</span></div><p>Red curry paste, bamboo shoots &amp; veg.</p></div></article>
-          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">27</span>Pad Kiew Waan <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3><span class="price">£9.75</span></div><p>Green curry paste, bamboo shoots &amp; veg.</p></div></article>
-          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">28</span>Pad Pong Karee <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3><span class="price">£9.75</span></div><p>Yellow curry paste, mushrooms &amp; mixed veg.</p></div></article>
-          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">29</span>Egg Noodles <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3><span class="price">£10.00</span></div><p>Thick noodles, green curry paste &amp; mixed veg.</p></div></article>
+        <div class="blk">
+          <div class="sec-head"><h2 class="fr">Curry Wok</h2><span class="num thai">๕</span></div>
+          <p class="sec-note">Without coconut milk · with your base &amp; topping.</p>
+          <div class="cards">
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">26</span>Pad Ped <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3><span class="price">£9.75</span></div><p>Red curry paste, bamboo shoots &amp; veg.</p></div></article>
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">27</span>Pad Kiew Waan <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3><span class="price">£9.75</span></div><p>Green curry paste, bamboo shoots &amp; veg.</p></div></article>
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">28</span>Pad Pong Karee <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3><span class="price">£9.75</span></div><p>Yellow curry paste, mushrooms &amp; mixed veg.</p></div></article>
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">29</span>Egg Noodles <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3><span class="price">£10.00</span></div><p>Thick noodles, green curry paste &amp; mixed veg.</p></div></article>
+          </div>
         </div>
 
-        <div class="sec-head" style="margin-top:6mm"><h2 class="fr">Pad Thai</h2><span class="num thai">๖</span></div>
-        <div class="cards">
-          <article class="card"><div class="thumb"><img src="../images/dish-noodlebox.png" alt="Pad Thai" /></div><div class="cbody"><div class="crow"><h3><span class="dn">30</span>Pad Thai <span class="tag solid">Popular</span> <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3><span class="price">£11.75</span></div><p>Rice noodles &amp; veg, wok-tossed. Mild or hot.</p></div></article>
-          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">31</span>Pad Priew Waan</h3><span class="price">£9.50</span></div><p>Sweet &amp; sour sauce with veg.</p></div></article>
+        <div class="blk">
+          <div class="sec-head"><h2 class="fr">Pad Thai</h2><span class="num thai">๖</span></div>
+          <div class="cards">
+            <article class="card"><div class="thumb"><img src="../images/dish-noodlebox.png" alt="Pad Thai" /></div><div class="cbody"><div class="crow"><h3><span class="dn">30</span>Pad Thai <span class="tag solid">Popular</span> <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3><span class="price">£11.75</span></div><p>Rice noodles &amp; veg, wok-tossed. Mild or hot.</p></div></article>
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">31</span>Pad Priew Waan</h3><span class="price">£9.50</span></div><p>Sweet &amp; sour sauce with veg.</p></div></article>
+          </div>
         </div>
       </div>
 
       <!-- COL 3 — NOODLE & RICE + COCONUT CURRIES -->
       <div class="col">
-        <div class="sec-head"><h2 class="fr">Noodle &amp; Rice</h2><span class="num thai">๗</span></div>
-        <p class="sec-note">Choose a sauce: soya · red · green · yellow curry · brown chilli · Thai spicy chilli.</p>
-        <div class="cards">
-          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">32</span>Thai Fried Egg Noodles</h3><span class="price">£10.00</span></div><p>Thick noodles with mixed veg.</p></div></article>
-          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">33</span>Thai Egg Fried Rice</h3><span class="price">£10.00</span></div><p>Egg fried rice with mixed veg.</p></div></article>
+        <div class="blk">
+          <div class="sec-head"><h2 class="fr">Noodle &amp; Rice</h2><span class="num thai">๗</span></div>
+          <p class="sec-note">Choose a sauce: soya · red · green · yellow curry · brown chilli · Thai spicy chilli.</p>
+          <div class="cards">
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">32</span>Thai Fried Egg Noodles</h3><span class="price">£10.00</span></div><p>Thick noodles with mixed veg.</p></div></article>
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">33</span>Thai Egg Fried Rice</h3><span class="price">£10.00</span></div><p>Egg fried rice with mixed veg.</p></div></article>
+          </div>
         </div>
 
-        <div class="sec-head" style="margin-top:6mm"><h2 class="fr">Curries</h2><span class="num thai">๘</span></div>
-        <p class="sec-note">With coconut milk · jasmine rice +£3.00, fried rice / noodles +£4.00.</p>
-        <div class="cards">
-          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">34</span>Thai Red Curry <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3></div><ul class="opts"><li>Prawn/beef/duck <span>£14.00</span></li><li>Chicken <span>£13.00</span></li><li>Tofu <span>£12.50</span></li></ul></div></article>
-          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">35</span>Thai Green Curry <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3></div><ul class="opts"><li>Prawn/beef/duck <span>£14.00</span></li><li>Chicken <span>£13.00</span></li><li>Tofu <span>£12.50</span></li></ul></div></article>
-          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">36</span>Thai Yellow Curry <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3><span class="price">£13.00</span></div><p>Chicken with potatoes.</p></div></article>
-          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">37</span>Massaman Curry</h3></div><p>With onion, potatoes &amp; peanut.</p><ul class="opts"><li>Beef <span>£14.00</span></li><li>Chicken <span>£13.00</span></li></ul></div></article>
-          <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">38</span>Panang Curry <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3></div><ul class="opts"><li>Beef <span>£14.00</span></li><li>Chicken <span>£13.50</span></li></ul></div></article>
+        <div class="blk">
+          <div class="sec-head"><h2 class="fr">Curries</h2><span class="num thai">๘</span></div>
+          <p class="sec-note">With coconut milk · jasmine rice +£3.00, fried rice / noodles +£4.00.</p>
+          <div class="cards">
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">34</span>Thai Red Curry <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3></div><ul class="opts"><li>Prawn/beef/duck <span>£14.00</span></li><li>Chicken <span>£13.00</span></li><li>Tofu <span>£12.50</span></li></ul></div></article>
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">35</span>Thai Green Curry <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3></div><ul class="opts"><li>Prawn/beef/duck <span>£14.00</span></li><li>Chicken <span>£13.00</span></li><li>Tofu <span>£12.50</span></li></ul></div></article>
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">36</span>Thai Yellow Curry <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3><span class="price">£13.00</span></div><p>Chicken with potatoes.</p></div></article>
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">37</span>Massaman Curry</h3></div><p>With onion, potatoes &amp; peanut.</p><ul class="opts"><li>Beef <span>£14.00</span></li><li>Chicken <span>£13.00</span></li></ul></div></article>
+            <article class="card"><div class="thumb ph"><svg viewBox="0 0 24 24"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M8 12c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5"/></svg></div><div class="cbody"><div class="crow"><h3><span class="dn">38</span>Panang Curry <span class="heat"><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span></h3></div><ul class="opts"><li>Beef <span>£14.00</span></li><li>Chicken <span>£13.50</span></li></ul></div></article>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="back-foot">
-      <p class="allergy">All dishes accompanied with jasmine rice. Fried rice or fried noodles +£1.25. &nbsp;·&nbsp; Allergies or intolerances? Please tell a member of our team when you order.</p>
-      <span class="bh-web" style="font-size:9pt">thaitowalk.com</span>
-      <div class="bh-socials">
-        <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:#F6F0E6"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3v12a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.5a5.6 5.6 0 1 0 4.8 5.6V9.3a7.2 7.2 0 0 0 4 1.2V7.5a4.3 4.3 0 0 1-3-1.7Z"/></svg>
-        <svg viewBox="0 0 24 24" style="width:16px;height:16px"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" fill="none" stroke="#F6F0E6" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="#F6F0E6" stroke-width="1.8"/><circle cx="17" cy="7" r="1.2" fill="#F6F0E6"/></svg>
-        <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:#F6F0E6"><path d="M14 8.5h2.2V5.6c-.4-.05-1.5-.16-2.7-.16-2.7 0-4.5 1.65-4.5 4.66V12H6.3v3h2.7v7h3.3v-7h2.6l.4-3h-3v-1.6c0-.86.23-1.4 1.4-1.4Z"/></svg>
-      </div>
     </div>
-
   </div>
+
+  <div class="footer">
+    <p class="allergy" style="flex:1">All dishes accompanied with jasmine rice. Fried rice or fried noodles +£1.25.<br />Allergies or intolerances? Please tell a member of our team when you order.</p>
+    <div class="foot-spacer"></div>
+    <div class="foot-socials">
+      <svg viewBox="0 0 24 24"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3v12a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.5a5.6 5.6 0 1 0 4.8 5.6V9.3a7.2 7.2 0 0 0 4 1.2V7.5a4.3 4.3 0 0 1-3-1.7Z"/></svg>
+      <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" fill="none" stroke="#F6F0E6" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="#F6F0E6" stroke-width="1.8"/><circle cx="17" cy="7" r="1.2"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M14 8.5h2.2V5.6c-.4-.05-1.5-.16-2.7-.16-2.7 0-4.5 1.65-4.5 4.66V12H6.3v3h2.7v7h3.3v-7h2.6l.4-3h-3v-1.6c0-.86.23-1.4 1.4-1.4Z"/></svg>
+      <span class="foot-web">thaitowalk.com</span>
+    </div>
+  </div>
+
 </section>
 
 </body>

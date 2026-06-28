@@ -1,67 +1,66 @@
 /* ==========================================================================
-   THAI TO WALK — PRINT MENU (A3 landscape, double-sided)
-   Shared foundation: brand tokens, A3 page setup, brand hero column, atoms.
-   Variant-specific dish styling lives in each panel's own <style> block.
-   Brand system mirrors the website (css/style.css): night-market dark theme.
+   THAI TO WALK — PRINT MENU (A3 landscape, double-sided) · CREAM THEME
+   Shared foundation: brand tokens, A3 page, black masthead + logo lockup,
+   hero photo band, cream body atoms, black footer band.
+   Brand orange = RAL 2004 (Pure Orange) ≈ #E75B12.
    ========================================================================== */
 
 :root {
-  --orange:      #F58220;
-  --orange-deep: #D96A10;
-  --ember:       #C2410C;
-  --charcoal:    #161412;
-  --charcoal-2:  #211D19;
-  --charcoal-3:  #2B2620;
+  --orange:      #E75B12;   /* RAL 2004 Pure Orange */
+  --orange-deep: #C2440C;
+  --ember:       #A8390A;
   --black:       #0C0B0A;
-  --bone:        #F6F0E6;
-  --bone-2:      #ECE3D3;
-  --cream-muted: rgba(246, 240, 230, .60);
-  --cream-faint: rgba(246, 240, 230, .40);
-  --hair:        rgba(246, 240, 230, .12);
-  --hair-orange: rgba(245, 130, 32, .26);
+  --char:        #161412;
+
+  --cream:       #F6F0E6;
+  --cream-2:     #EFE7D8;
+  --cream-3:     #E7DCC8;
+
+  --ink:         #231F1B;
+  --ink-soft:    #3A332C;
+  --ink-muted:   rgba(35, 31, 27, .62);
+  --ink-faint:   rgba(35, 31, 27, .42);
+
+  --hair:        rgba(35, 31, 27, .14);
+  --hair-strong: rgba(35, 31, 27, .26);
+  --hair-orange: rgba(231, 91, 18, .38);
+
+  --on-dark-mut: rgba(246, 240, 230, .66);
 
   --display: 'Fraunces', Georgia, serif;
   --body:    'Hanken Grotesk', system-ui, sans-serif;
   --mono:    'Space Mono', ui-monospace, monospace;
   --thai:    'Chonburi', var(--display);
+  --wm:      'Anton', 'Hanken Grotesk', sans-serif;
 }
 
 * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 html, body { margin: 0; padding: 0; }
-body { font-family: var(--body); color: var(--bone); background: #3a3531; }
+body { font-family: var(--body); color: var(--ink); background: #cdc6ba; }
 
 /* ---------- A3 landscape page ---------- */
 @page { size: A3 landscape; margin: 0; }
 .page {
   width: 420mm; height: 297mm;
-  background: var(--charcoal);
-  color: var(--bone);
+  background: var(--cream);
+  color: var(--ink);
   position: relative; overflow: hidden;
   page-break-after: always;
-  padding: 13mm 14mm;
+  display: flex; flex-direction: column;
 }
 .page:last-child { page-break-after: auto; }
-.page::before { /* subtle warm glow, top */
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(70% 55% at 50% -8%, rgba(245,130,32,.10), transparent 60%);
-}
+.page-body { flex: 1; min-height: 0; padding: 9mm 11mm; position: relative; }
 
-/* Screen preview only — printer ignores this */
 @media screen {
   body { padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
-  .page { box-shadow: 0 18px 60px rgba(0,0,0,.5); }
+  .page { box-shadow: 0 18px 60px rgba(0,0,0,.45); }
 }
 
-/* ---------- Shared type atoms ---------- */
+/* ---------- Type atoms ---------- */
 .fr   { font-family: var(--display); font-weight: 560; }
 .mono { font-family: var(--mono); }
 .thai { font-family: var(--thai); }
-.eyebrow {
-  font-family: var(--mono); font-weight: 700;
-  font-size: 8pt; letter-spacing: .22em; text-transform: uppercase;
-  color: var(--orange); margin: 0;
-}
-.price { font-family: var(--mono); font-weight: 700; color: var(--orange); white-space: nowrap; }
+.price { font-family: var(--mono); font-weight: 700; color: var(--orange-deep); white-space: nowrap; }
 
 /* Heat chillies */
 .heat { display: inline-flex; gap: 2px; vertical-align: middle; }
@@ -70,75 +69,77 @@ body { font-family: var(--body); color: var(--bone); background: #3a3531; }
   font-family: var(--mono); font-weight: 700; font-size: 6.5pt;
   letter-spacing: .12em; text-transform: uppercase;
   padding: 2px 6px; border-radius: 4px;
-  background: rgba(245,130,32,.16); color: var(--orange);
+  background: rgba(231, 91, 18, .14); color: var(--orange-deep);
 }
-.tag.solid { background: var(--orange); color: var(--charcoal); }
+.tag.solid { background: var(--orange); color: #fff; }
 
-/* ---------- Section heading (shared) ---------- */
-.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-.sec-head h2 { font-family: var(--display); font-weight: 580; margin: 0; line-height: 1; }
-.sec-head .num { font-family: var(--thai); color: var(--hair-orange); line-height: 1; }
-
-/* ==========================================================================
-   BRAND HERO COLUMN (front page, right) — shared across both variants
-   ========================================================================== */
-.brand-hero {
-  background: var(--black);
-  border: 1px solid var(--hair-orange);
-  border-radius: 10px;
-  padding: 14mm 11mm;
-  display: flex; flex-direction: column;
+/* ---------- MASTHEAD (black band, logo lockup) ---------- */
+.masthead {
+  background: var(--black); color: #fff;
+  padding: 6mm 11mm;
+  display: flex; align-items: center; justify-content: space-between; gap: 12mm;
   position: relative; overflow: hidden;
-  height: 100%;
 }
-.brand-hero::before {
-  content: ""; position: absolute; left: 50%; top: 34%; transform: translateX(-50%);
-  width: 150%; height: 60%;
-  background: radial-gradient(50% 50% at 50% 50%, rgba(245,130,32,.18), transparent 70%);
+.masthead::after { /* warm edge glow */
+  content: ""; position: absolute; right: -10%; top: -40%; width: 50%; height: 180%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(231,91,18,.30), transparent 70%);
   pointer-events: none;
 }
-.bh-top { position: relative; text-align: center; }
-.bh-logo { width: 46mm; height: auto; margin: 0 auto 6mm; display: block; }
-.bh-title { font-family: var(--display); font-weight: 600; font-size: 23pt; line-height: 1.04; margin: 0; }
-.bh-title em { color: var(--orange); font-style: italic; }
-.bh-tagline { font-family: var(--thai); color: var(--orange); font-size: 13pt; margin: 4mm 0 0; }
-.bh-badges { display: flex; justify-content: center; gap: 8px; margin-top: 6mm; }
-.bh-badge {
+.lockup { display: flex; align-items: center; gap: 9px; position: relative; }
+.lockup img { height: 17mm; width: auto; display: block; }
+.lockup .wm {
+  font-family: var(--wm); font-weight: 400;
+  font-size: 33pt; line-height: .8; letter-spacing: .005em;
+  text-transform: uppercase; color: #fff;
+}
+.mast-right { text-align: right; position: relative; }
+.mast-right .tl { font-family: var(--display); font-weight: 560; font-style: italic; font-size: 15pt; color: var(--orange); margin: 0; }
+.mast-right .sub { font-family: var(--mono); font-size: 8pt; letter-spacing: .18em; text-transform: uppercase; color: var(--on-dark-mut); margin: 3px 0 0; }
+.mast-badges { display: flex; justify-content: flex-end; gap: 7px; margin-top: 6px; }
+.mbadge {
   display: inline-flex; align-items: center; gap: 5px;
-  border: 1px solid var(--hair-orange); border-radius: 999px;
-  padding: 4px 12px; font-family: var(--mono); font-size: 7.5pt;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--bone);
+  border: 1px solid rgba(231,91,18,.5); border-radius: 999px;
+  padding: 3px 11px; font-family: var(--mono); font-size: 7pt;
+  letter-spacing: .12em; text-transform: uppercase; color: #fff;
 }
-.bh-badge svg { width: 12px; height: 12px; }
-.bh-badge.halal { color: var(--orange); border-color: var(--orange); }
+.mbadge svg { width: 11px; height: 11px; stroke: var(--orange); fill: none; stroke-width: 2.4; }
+.mbadge.halal { color: var(--orange); }
+.mast-hygiene { display: inline-flex; align-items: center; gap: 6px; background: #047a45; border-radius: 5px; padding: 3px 7px; }
+.mast-hygiene .lbl { font-weight: 700; font-size: 5.6pt; line-height: 1; color: #fff; letter-spacing: .02em; }
+.mast-hygiene .score { font-weight: 800; font-size: 12pt; line-height: 1; color: #ffd200; }
 
-.bh-info { position: relative; margin-top: auto; display: grid; gap: 5mm; }
-.bh-row { display: grid; grid-template-columns: 16px 1fr; gap: 9px; align-items: start; }
-.bh-row svg { width: 14px; height: 14px; fill: none; stroke: var(--orange); stroke-width: 1.8; margin-top: 2px; }
-.bh-row .k { font-family: var(--mono); font-size: 7pt; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); }
-.bh-row .v { font-size: 9.5pt; line-height: 1.45; color: var(--bone); margin-top: 2px; }
-.bh-row .v b { font-weight: 600; }
-.bh-row .v .muted { color: var(--cream-muted); }
-
-.bh-foot { position: relative; margin-top: 6mm; padding-top: 5mm; border-top: 1px solid var(--hair); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.bh-socials { display: flex; gap: 9px; }
-.bh-socials svg { width: 16px; height: 16px; fill: var(--bone); }
-.bh-web { font-family: var(--mono); font-size: 8pt; letter-spacing: .04em; color: var(--orange); }
-
-/* Food hygiene rating 5 badge */
-.hygiene { display: inline-flex; align-items: center; gap: 7px; background: #006b3f; border-radius: 6px; padding: 4px 7px; }
-.hygiene .lbl { font-family: var(--body); font-weight: 700; font-size: 6pt; line-height: 1; color: #fff; letter-spacing: .02em; }
-.hygiene .score { font-family: var(--body); font-weight: 800; font-size: 14pt; line-height: 1; color: #ffd200; }
-
-/* Delivery strip */
-.bh-delivery {
-  position: relative; margin-top: 5mm;
-  background: rgba(245,130,32,.12); border: 1px dashed var(--hair-orange);
-  border-radius: 8px; padding: 4mm 5mm; text-align: center;
+/* ---------- HERO PHOTO BAND (three cartons) ---------- */
+.hero-band { position: relative; height: 42mm; overflow: hidden; background: var(--cream-3); }
+.hero-band img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-band .ph {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  background: repeating-linear-gradient(135deg, var(--cream-2) 0 16px, var(--cream-3) 16px 32px);
+  color: var(--ink-faint); font-family: var(--mono); font-size: 9pt; letter-spacing: .14em; text-transform: uppercase;
 }
-.bh-delivery .k { font-family: var(--mono); font-size: 7pt; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); }
-.bh-delivery .v { font-size: 9pt; margin-top: 3px; color: var(--bone); }
-.bh-delivery .v b { color: var(--orange); font-weight: 700; font-family: var(--mono); }
 
-/* Allergy note */
-.allergy { font-family: var(--mono); font-size: 7pt; letter-spacing: .06em; color: var(--cream-faint); text-align: center; line-height: 1.5; }
+/* ---------- Section heading ---------- */
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.sec-head h2 { font-family: var(--display); font-weight: 580; margin: 0; line-height: 1; color: var(--ink); }
+.sec-head .num { font-family: var(--thai); color: var(--hair-orange); line-height: 1; }
+
+/* ---------- FOOTER (black band) ---------- */
+.footer {
+  background: var(--black); color: var(--cream);
+  padding: 5mm 11mm;
+  display: flex; align-items: center; gap: 9mm;
+  position: relative;
+}
+.foot-cell { display: grid; grid-template-columns: 16px 1fr; gap: 8px; align-items: start; }
+.foot-cell svg { width: 14px; height: 14px; stroke: var(--orange); fill: none; stroke-width: 1.8; margin-top: 2px; }
+.foot-cell .k { font-family: var(--mono); font-size: 6.6pt; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); }
+.foot-cell .v { font-size: 8.6pt; line-height: 1.4; margin-top: 2px; }
+.foot-cell .v b { font-weight: 600; }
+.foot-cell .v .muted { color: var(--on-dark-mut); }
+.foot-sep { width: 1px; align-self: stretch; background: rgba(246,240,230,.14); }
+.foot-spacer { flex: 1; }
+.foot-socials { display: flex; gap: 9px; align-items: center; }
+.foot-socials svg { width: 16px; height: 16px; fill: var(--cream); }
+.foot-web { font-family: var(--mono); font-size: 9pt; letter-spacing: .03em; color: var(--orange); }
+.foot-delivery { text-align: center; }
+.foot-delivery .v b { color: var(--orange); font-family: var(--mono); }
+.allergy { font-family: var(--mono); font-size: 6.8pt; letter-spacing: .05em; color: var(--on-dark-mut); line-height: 1.5; }

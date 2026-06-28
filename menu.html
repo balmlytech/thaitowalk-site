@@ -24,7 +24,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Chonburi&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Chonburi&family=Anton&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/menu.css" />
   <script>document.documentElement.classList.add('js');</script>
@@ -86,7 +86,14 @@
           {"@type":"MenuItem","name":"Pad Med Ma Muang","description":"Cashew nuts, oyster sauce and veg.","offers":{"@type":"Offer","price":"9.50","priceCurrency":"GBP"}},
           {"@type":"MenuItem","name":"Nam Mun Hoi","description":"Oyster sauce with mixed veg.","offers":{"@type":"Offer","price":"9.50","priceCurrency":"GBP"}},
           {"@type":"MenuItem","name":"Pad Khing","description":"Ginger, oyster sauce and veg.","offers":{"@type":"Offer","price":"9.50","priceCurrency":"GBP"}},
-          {"@type":"MenuItem","name":"Pad Krapow","description":"Oyster sauce, chilli, basil and veg.","offers":{"@type":"Offer","price":"9.50","priceCurrency":"GBP"}},
+          {"@type":"MenuItem","name":"Pad Krapow","description":"Oyster sauce, chilli, basil and veg.","offers":{"@type":"Offer","price":"9.50","priceCurrency":"GBP"}}
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Curry Wok (without coconut milk)",
+        "description": "Build your box: choose a dish, a base and a topping.",
+        "hasMenuItem": [
           {"@type":"MenuItem","name":"Pad Ped","description":"Red curry paste, bamboo shoots and veg.","offers":{"@type":"Offer","price":"9.75","priceCurrency":"GBP"}},
           {"@type":"MenuItem","name":"Pad Kiew Waan","description":"Green curry paste, bamboo shoots and veg.","offers":{"@type":"Offer","price":"9.75","priceCurrency":"GBP"}},
           {"@type":"MenuItem","name":"Pad Pong Karee","description":"Yellow curry paste, mushrooms and mixed veg.","offers":{"@type":"Offer","price":"9.75","priceCurrency":"GBP"}},
@@ -129,14 +136,16 @@
   <!-- ============ HEADER ============ -->
   <header class="site-header scrolled">
     <a class="brand" href="/" aria-label="Thai To Walk home">
-      <img src="/images/logo.png" alt="Thai To Walk" />
+      <img src="/images/logo.png" alt="" />
+      <span class="wordmark">Thai to Walk</span>
     </a>
     <nav class="nav" aria-label="Primary">
       <a href="/#story">Our promise</a>
       <a href="/#build">Build a box</a>
+      <a href="/#dishes">Dishes</a>
       <a href="/menu.html" aria-current="page">Menu</a>
       <a href="/#find">Find us</a>
-      <a class="nav-cta" href="/#find">Find us</a>
+      <a class="nav-cta" href="/menu.html">View menu</a>
     </nav>
     <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -230,7 +239,7 @@
         <article class="dish" data-reveal><div class="top"><span class="dnum">11</span><h3>Mini Vegetable Spring Rolls</h3></div><span class="price">£5.25</span><p>10 mini vegetable spring rolls.</p><div class="dish-tags"><span class="tag-pill">Veggie</span></div></article>
         <article class="dish" data-reveal><div class="top"><span class="dnum">12</span><h3>Goong Hom Pha</h3></div><span class="price">£6.75</span><p>Fried king prawns spring roll.</p></article>
         <article class="dish" data-reveal><div class="top"><span class="dnum">13</span><h3>Kha Duk Thod</h3></div><span class="price">£10.00</span><p>Spare ribs.</p></article>
-        <article class="dish" data-reveal><div class="top"><span class="dnum">14</span><h3>Mixed Platter</h3></div><span class="price">£15.00</span><p>Mixed items — two pieces from each. Served with sweet chilli &amp; satay sauce.</p></article>
+        <article class="dish" data-reveal><div class="top"><span class="dnum">14</span><h3>Mixed Platter</h3></div><span class="price">£15.00</span><p>Two pieces each of items 1, 3, 4, 5 &amp; 7. Served with sweet chilli &amp; satay sauce.</p></article>
       </div>
 
       <!-- SOUPS -->
@@ -308,6 +317,16 @@
             <span class="dish-heat" title="Very spicy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span>
           </div>
           <span class="price">£9.50</span><p>“Be careful — I’m very spicy! Oyster sauce, chilli, basil and veg.”</p><div class="dish-tags"><span class="tag-pill">Spicy</span></div></article>
+      </div>
+
+      <!-- CURRY WOK (without coconut milk) -->
+      <div class="menu-cat">
+        <div class="menu-cat-head" data-reveal>
+          <h2>Curry Wok</h2>
+          <span class="cat-num" aria-hidden="true">๕</span>
+        </div>
+        <p class="opts-note" style="margin-bottom:18px;color:var(--ink-muted);font-family:var(--mono);font-size:.74rem">Without coconut milk. Served with your chosen base &amp; topping (see “Build your box” above).</p>
+
         <article class="dish" data-reveal>
           <div class="top"><span class="dnum">26</span><h3>Pad Ped</h3>
             <span class="dish-heat" title="Spicy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 8a8 8 0 0 1-16 0c0-4 3-6 4-8 0 2 1 3 2 3 2 0 1-3-1-6Z"/></svg></span>
@@ -334,7 +353,7 @@
       <div class="menu-cat">
         <div class="menu-cat-head" data-reveal>
           <h2>Pad Thai &amp; Sweet &amp; Sour</h2>
-          <span class="cat-num" aria-hidden="true">๕</span>
+          <span class="cat-num" aria-hidden="true">๖</span>
         </div>
 
         <article class="dish" data-reveal>
@@ -353,7 +372,7 @@
       <div class="menu-cat">
         <div class="menu-cat-head" data-reveal>
           <h2>Noodle &amp; Rice Dishes</h2>
-          <span class="cat-num" aria-hidden="true">๖</span>
+          <span class="cat-num" aria-hidden="true">๗</span>
         </div>
         <p class="opts-note" style="margin-bottom:18px;color:var(--ink-muted);font-family:var(--mono);font-size:.74rem">Choose your sauce: soya · red curry · green curry · yellow curry · brown chilli · Thai spicy chilli.</p>
         <article class="dish" data-reveal><div class="top"><span class="dnum">32</span><h3>Thai Fried Egg Noodles</h3></div><span class="price">£10.00</span><p>“An authentic Asian dish — thick noodles and mixed veg.”</p></article>
@@ -364,7 +383,7 @@
       <div class="menu-cat">
         <div class="menu-cat-head" data-reveal>
           <h2>Curries</h2>
-          <span class="cat-num" aria-hidden="true">๗</span>
+          <span class="cat-num" aria-hidden="true">๘</span>
         </div>
         <p class="opts-note" style="margin-bottom:18px;color:var(--ink-muted);font-family:var(--mono);font-size:.74rem">With coconut milk. Served with jasmine rice +£3.00, or fried rice / fried noodles +£4.00.</p>
 
@@ -416,7 +435,7 @@
       <div class="menu-cat">
         <div class="menu-cat-head" data-reveal>
           <h2>Extras &amp; Drinks</h2>
-          <span class="cat-num" aria-hidden="true">๘</span>
+          <span class="cat-num" aria-hidden="true">๙</span>
         </div>
 
         <div class="menu-cols" data-reveal>
@@ -448,7 +467,6 @@
             <li>Lychee juice <span>£2.75</span></li>
             <li>Aloe vera <span>£2.75</span></li>
             <li>Still water — 500ml <span>£2.25</span></li>
-            <li>Water — large 1.5L <span>£3.75</span></li>
           </ul>
           <ul class="price-list">
             <li class="ph" style="border:0;padding-bottom:0">Desserts</li>

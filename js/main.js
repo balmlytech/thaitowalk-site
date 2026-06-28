@@ -123,6 +123,37 @@
     }
   }
 
+  /* ---------- Dish clips: lazy-load + play only in view (perf + reduced motion) ---------- */
+  var dishClips = document.querySelectorAll('video.dish-clip');
+  if (dishClips.length) {
+    if (reduceMotion) {
+      // first frame as a still; never autoplay
+      dishClips.forEach(function (v) {
+        if (v.dataset.src && !v.src) { v.src = v.dataset.src; }
+        v.preload = 'metadata';
+      });
+    } else if ('IntersectionObserver' in window) {
+      var clipIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var v = e.target;
+          if (e.isIntersecting) {
+            if (!v.src && v.dataset.src) { v.src = v.dataset.src; }
+            var p = v.play();
+            if (p && p.catch) p.catch(function () {});
+          } else if (!v.paused) {
+            v.pause();
+          }
+        });
+      }, { rootMargin: '200px 0px', threshold: 0.25 });
+      dishClips.forEach(function (v) { clipIO.observe(v); });
+    } else {
+      dishClips.forEach(function (v) {
+        if (v.dataset.src) { v.src = v.dataset.src; }
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+      });
+    }
+  }
+
   /* ---------- Footer year ---------- */
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
