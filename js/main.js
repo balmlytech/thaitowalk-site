@@ -182,8 +182,11 @@
   var cs = document.getElementById('comingSoon');
   if (cs) {
     var CS_KEY = 'ttw-opening-weekend-2026';
+    // Auto-hide after the opening weekend (Sat 12 & Sun 13 Sept 2026) — from Mon 14th onwards.
+    var CS_EXPIRES = new Date('2026-09-14T00:00:00');
     var seen = false;
     try { seen = localStorage.getItem(CS_KEY) === '1'; } catch (e) {}
+    if (new Date() >= CS_EXPIRES) { seen = true; }
 
     if (!seen) {
       var lastFocus = document.activeElement;
