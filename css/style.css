@@ -840,3 +840,72 @@ body.cs-open { overflow: hidden; }
   .cs-close:hover { transform: none; }
 }
 
+/* ==========================================================================
+   ONLINE ORDERING — floating "Order now" CTA + Flipdish order page
+   ========================================================================== */
+
+/* Floating Order-now button (all pages except /order.html) */
+.order-fab {
+  position: fixed; z-index: 1400;
+  right: clamp(16px, 4vw, 30px);
+  bottom: clamp(16px, 4vw, 30px);
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 14px 24px; border-radius: 999px;
+  background: var(--orange); color: var(--charcoal);
+  font-family: var(--body); font-weight: 700; font-size: 1rem; letter-spacing: .01em;
+  text-decoration: none; white-space: nowrap;
+  box-shadow: 0 12px 30px rgba(0,0,0,.34), 0 3px 10px rgba(245,130,32,.42);
+  transition: transform var(--d-fast) var(--ease-out), background var(--d-fast) var(--ease-out);
+}
+.order-fab svg { width: 18px; height: 18px; }
+.order-fab:hover { transform: translateY(-2px); background: var(--bone); }
+.order-fab:active { transform: translateY(0); }
+@media (max-width: 600px) {
+  .order-fab {
+    left: 12px; right: 12px; bottom: 12px;
+    padding: 16px 20px; font-size: 1.05rem; border-radius: 16px;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .order-fab { transition: background var(--d-fast) var(--ease-out); }
+  .order-fab:hover { transform: none; }
+}
+
+/* Order page — dark intro band over the Flipdish embed */
+.order-hero {
+  background: var(--charcoal); color: var(--bone); text-align: center;
+  padding: calc(clamp(120px, 18vh, 180px)) 0 clamp(40px, 6vw, 72px);
+  position: relative; overflow: hidden;
+}
+.order-hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(60% 80% at 50% 0%, rgba(245, 130, 32, .13), transparent 62%);
+}
+.order-hero .wrap { position: relative; }
+.order-hero .eyebrow { justify-content: center; }
+.order-hero h1 { font-size: var(--step-2); margin-top: 16px; }
+.order-hero h1 em { color: var(--orange); font-weight: 500; }
+.order-hero p { color: var(--cream-muted); margin: 16px auto 0; max-width: 52ch; font-size: var(--step-0); }
+.order-hero .order-facts {
+  display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px;
+  margin-top: 26px; padding: 13px 26px;
+  border: 1px dashed rgba(246, 240, 230, .25); border-radius: 999px;
+  font-family: var(--mono); font-size: .74rem; letter-spacing: .06em; color: var(--cream-muted);
+}
+.order-hero .order-facts b { color: var(--orange); font-weight: 700; }
+
+/* Flipdish embed container */
+.order-embed { background: var(--bone); color: var(--ink); padding: clamp(20px, 3vw, 40px) 0 clamp(48px, 8vw, 96px); }
+.order-embed .wrap { max-width: 1040px; }
+#flipdish-menu { min-height: 60vh; }
+.order-loading {
+  text-align: center; padding: clamp(48px, 10vh, 100px) 0;
+  font-family: var(--mono); font-size: .82rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.order-loading .dot { display: inline-block; animation: orderPulse 1.2s var(--ease-out) infinite; }
+@keyframes orderPulse { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
+.order-fallback { text-align: center; font-size: .9rem; color: var(--ink-muted); margin-top: 20px; }
+.order-fallback a { color: var(--ember); text-decoration: underline; text-underline-offset: 2px; }
+
