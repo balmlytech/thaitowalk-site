@@ -181,7 +181,7 @@
   /* ---------- Coming-soon poster (dismissible, remembered) ---------- */
   var cs = document.getElementById('comingSoon');
   if (cs) {
-    var CS_KEY = 'ttw-coming-soon-dismissed';
+    var CS_KEY = 'ttw-opening-weekend-2026';
     var seen = false;
     try { seen = localStorage.getItem(CS_KEY) === '1'; } catch (e) {}
 
