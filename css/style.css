@@ -909,3 +909,13 @@ body.cs-open { overflow: hidden; }
 .order-fallback { text-align: center; font-size: .9rem; color: var(--ink-muted); margin-top: 20px; }
 .order-fallback a { color: var(--ember); text-decoration: underline; text-underline-offset: 2px; }
 
+/* Footer social links */
+.site-footer .foot-socials { display: flex; gap: 14px; margin-top: 18px; }
+.site-footer .foot-socials a {
+  color: var(--cream-muted); display: inline-flex;
+  transition: color var(--d-fast) var(--ease-out), transform var(--d-fast) var(--ease-out);
+}
+.site-footer .foot-socials a:hover { color: var(--orange); transform: translateY(-2px); }
+.site-footer .foot-socials svg { width: 22px; height: 22px; }
+@media (prefers-reduced-motion: reduce) { .site-footer .foot-socials a:hover { transform: none; } }
+
